@@ -33,7 +33,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             onClick={() => handleNavigate("home")}
             className="text-2xl tracking-tighter text-white hover:text-primary transition-colors"
           >
-            <span className="text-primary">APEX</span> RACING
+            SAE <span className="text-primary">OVERDRIVE</span> 
           </button>
 
           {/* Desktop Navigation */}
