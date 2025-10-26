@@ -1,6 +1,5 @@
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
 
 interface NavbarProps {
   currentPage: string;
@@ -8,94 +7,138 @@ interface NavbarProps {
 }
 
 export function Navbar({ currentPage, onNavigate }: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   const navItems = [
-    { name: "Home", id: "home" },
-    { name: "Events", id: "events" },
-    { name: "Team", id: "team" },
-    { name: "Gallery", id: "gallery" },
-    { name: "Milestones", id: "milestones" },
-    { name: "Sponsors", id: "sponsors" },
+    { id: "home", label: "Home" },
+    { id: "events", label: "Events" },
+    { id: "team", label: "Team" },
+    { id: "gallery", label: "Gallery" },
+    { id: "milestones", label: "Milestones" },
+    { id: "sponsors", label: "Sponsors" },
   ];
 
-  const handleNavigate = (page: string) => {
-    onNavigate(page);
-    setMobileMenuOpen(false);
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      onNavigate(id);
+    }
   };
 
+  // close mobile menu on navigation
+  const handleNav = (id: string) => {
+    scrollTo(id);
+    setOpen(false);
+  };
+
+  // Scroll-spy: observe sections and inform parent which is active
+  useEffect(() => {
+    const sections = navItems
+      .map((n) => document.getElementById(n.id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!sections.length) return;
+
+    observerRef.current?.disconnect();
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) {
+          onNavigate(visible.target.id);
+        }
+      },
+      { threshold: [0.25, 0.45, 0.6] }
+    );
+
+    sections.forEach((s) => observerRef.current?.observe(s));
+    return () => observerRef.current?.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <button
-            onClick={() => handleNavigate("home")}
-            className="text-2xl tracking-tighter text-white hover:text-primary transition-colors"
-          >
-            SAE <span className="text-primary">OVERDRIVE</span> 
-          </button>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="bg-black/80 backdrop-blur-lg border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-20 flex items-center justify-between">
+            {/* Brand */}
+            <button
+              onClick={() => handleNav("home")}
+              className="flex items-center gap-3 text-white ml-1 md:ml-0"
+              aria-label="Go to Home"
+            >
+              <span className="text-2xl md:text-base tracking-tight font-medium">SAE</span>
+              <span className="text-2xl md:text-base tracking-tight font-extrabold text-red-500">
+                OVERDRIVE
+              </span>
+            </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => {
+                const active = currentPage === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNav(item.id)}
+                    className="group relative px-1 py-3 mt-2 text-lg text-gray-200 hover:text-red-500 transition-colors"
+                    aria-current={active ? "page" : undefined}
+                  >
+                    <span className={`uppercase tracking-wider ${active ? "text-white" : ""}`}>
+                      {item.label}
+                    </span>
+
+                    <span
+                      className={`
+                        block h-[2px] bg-red-500 origin-left transition-transform duration-300 ease-out mt-2
+                        ${active ? "scale-x-100" : "scale-x-0"} group-hover:scale-x-100
+                      `}
+                      style={{ transformOrigin: "left" }}
+                    />
+                  </button>
+
+                );
+              })}
+            </nav>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
               <button
-                key={item.id}
-                onClick={() => handleNavigate(item.id)}
-                className={`text-sm tracking-wide uppercase transition-colors relative ${
-                  currentPage === item.id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-white"
-                }`}
+                onClick={() => setOpen((s) => !s)}
+                aria-label="Toggle menu"
+                aria-expanded={open}
+                className="p-2 rounded-md text-white hover:bg-white/5 focus:outline-none"
               >
-                {item.name}
-                {currentPage === item.id && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary"
-                  />
-                )}
+                {open ? <X size={20} /> : <Menu size={20} />}
               </button>
-            ))}
+            </div>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-t border-border overflow-hidden"
-          >
-            <div className="px-4 py-6 space-y-4">
+        {/* Mobile dropdown */}
+        {open && (
+          <div className="md:hidden bg-black/80 backdrop-blur-sm border-t border-white/6">
+            <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavigate(item.id)}
-                  className={`block w-full text-left text-lg tracking-wide uppercase transition-colors ${
+                  onClick={() => handleNav(item.id)}
+                  className={`w-full text-left px-3 py-3 rounded-md transition-colors ${
                     currentPage === item.id
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-white"
+                      ? "text-white bg-white/5"
+                      : "text-gray-300 hover:text-white hover:bg-white/3"
                   }`}
                 >
-                  {item.name}
+                  <span className="uppercase tracking-wider">{item.label}</span>
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </nav>
+      </div>
+    </header>
   );
 }

@@ -12,31 +12,19 @@ import { Toaster } from "./components/ui/sonner";
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <HomePage onNavigate={setCurrentPage} />;
-      case "events":
-        return <EventsPage />;
-      case "team":
-        return <TeamPage />;
-      case "gallery":
-        return <GalleryPage />;
-      case "milestones":
-        return <MilestonesPage />;
-      case "sponsors":
-        return <SponsorsPage />;
-      default:
-        return <HomePage onNavigate={setCurrentPage} />;
-    }
-  };
-
+  
+  
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main>{renderPage()}</main>
-      <Footer />
+      <div id="home"><HomePage onNavigate={setCurrentPage} /></div>
+      <div id="events"><EventsPage /></div>
+      <div id="team"><TeamPage /></div>
+      <div id="gallery"><GalleryPage /></div>
+      <div id="milestones"><MilestonesPage /></div>
+      <div id="sponsors"><SponsorsPage /></div>
       <Toaster />
+      <Footer />
     </div>
   );
 }
