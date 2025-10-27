@@ -20,8 +20,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div>
       <Hero
-        image="https://images.unsplash.com/photo-1696841749266-7a38fecbcaad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjYXIlMjB0cmFjayUyMG1vdGlvbnxlbnwxfHx8fDE3NjAyNjY3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-        title="Presenting Our Machine"
+        image="herobg.jpg"
+        title="Presenting Our Team"
         subtitle="Where precision engineering meets unrelenting speed"
         ctaText="Explore Our Journey"
         onCtaClick={() => onNavigate("team")}
@@ -42,10 +42,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 Latest Update
               </div>
               <h2 className="text-4xl md:text-5xl mb-6">
-                Victory at Monaco Grand Prix
+                Victory at Buddh International Circuit
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                Our team secured a historic podium finish at the iconic Monaco
+                Our team secured a historic podium finish at the iconic Buddh
                 circuit, marking our best performance of the season. Read about
                 the strategy, challenges, and triumph.
               </p>
