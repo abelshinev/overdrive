@@ -2,65 +2,30 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { TeamCard } from "../components/TeamCard";
 import { Button } from "../components/ui/button";
+import { teamMembers, getTeamMembersByCategory } from "../data/teamMembers";
+import { TeamMemberProfile } from "./TeamMemberProfile";
 
 export function TeamPage() {
   const [showAlumni, setShowAlumni] = useState(false);
+  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
-  const currentTeam = [
-    {
-      name: "Marcus Steel",
-      role: "Lead Driver",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "7 years of championship experience with 12 podium finishes.",
-    },
-    {
-      name: "Sofia Ramirez",
-      role: "Performance Driver",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Rising star with exceptional technical skills and precision driving.",
-    },
-    {
-      name: "James Chen",
-      role: "Team Principal",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "15+ years of motorsport leadership and strategic excellence.",
-    },
-    {
-      name: "Elena Volkov",
-      role: "Chief Engineer",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Pioneering aerodynamics specialist with groundbreaking innovations.",
-    },
-    {
-      name: "David Martinez",
-      role: "Head of Strategy",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Master tactician behind our race-winning strategies.",
-    },
-    {
-      name: "Lisa Thompson",
-      role: "Performance Analyst",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Data-driven approach to maximizing car and driver performance.",
-    },
-  ];
+  const drivers = getTeamMembersByCategory("drivers");
+  const leadership = getTeamMembersByCategory("leadership");
+  const engineering = getTeamMembersByCategory("engineering");
+  const alumni = getTeamMembersByCategory("alumni");
 
-  const alumni = [
-    {
-      name: "Robert Hamilton",
-      role: "Former Lead Driver",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "2018-2022 | 3 Championship titles",
-      isAlumni: true,
-    },
-    {
-      name: "Maria Santos",
-      role: "Former Team Principal",
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "2015-2023 | Led team to championship glory",
-      isAlumni: true,
-    },
-  ];
+  const handleMemberClick = (memberId: string) => {
+    setSelectedMemberId(memberId);
+  };
+
+  const handleCloseProfile = () => {
+    setSelectedMemberId(null);
+  };
+
+  // Show member profile if one is selected
+  if (selectedMemberId) {
+    return <TeamMemberProfile memberId={selectedMemberId} onClose={handleCloseProfile} />;
+  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -89,28 +54,93 @@ export function TeamPage() {
         </motion.div>
       </section>
 
-      {/* Current Team */}
+      {/* Drivers Section */}
       <section className="bg-background py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2
-            className="text-4xl mb-12 text-center"
+            className="text-4xl mb-12 uppercase tracking-tighter"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Current Team
+            Drivers
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentTeam.map((member, index) => (
+            {drivers.map((member, index) => (
               <motion.div
-                key={member.name}
+                key={member.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <TeamCard {...member} />
+                <TeamCard
+                  {...member}
+                  onClick={() => handleMemberClick(member.id)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section className="bg-card py-16 px-4 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            className="text-4xl mb-12 uppercase tracking-tighter"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Leadership
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {leadership.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <TeamCard
+                  {...member}
+                  onClick={() => handleMemberClick(member.id)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Section */}
+      <section className="bg-background py-16 px-4 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            className="text-4xl mb-12 uppercase tracking-tighter"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Engineering
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {engineering.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <TeamCard
+                  {...member}
+                  onClick={() => handleMemberClick(member.id)}
+                />
               </motion.div>
             ))}
           </div>
@@ -121,7 +151,7 @@ export function TeamPage() {
       <section className="bg-card py-16 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl mb-6">Team Alumni</h2>
+            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Alumni</h2>
             <Button
               variant="outline"
               onClick={() => setShowAlumni(!showAlumni)}
@@ -140,12 +170,16 @@ export function TeamPage() {
             >
               {alumni.map((member, index) => (
                 <motion.div
-                  key={member.name}
+                  key={member.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <TeamCard {...member} />
+                  <TeamCard
+                    {...member}
+                    isAlumni={true}
+                    onClick={() => handleMemberClick(member.id)}
+                  />
                 </motion.div>
               ))}
             </motion.div>

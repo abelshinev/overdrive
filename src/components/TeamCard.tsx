@@ -7,9 +7,11 @@ interface TeamCardProps {
   image: string;
   bio: string;
   isAlumni?: boolean;
+  id?: string;
+  onClick?: () => void;
 }
 
-export function TeamCard({ name, role, image, bio, isAlumni = false }: TeamCardProps) {
+export function TeamCard({ name, role, image, bio, isAlumni = false, id, onClick }: TeamCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -17,6 +19,7 @@ export function TeamCard({ name, role, image, bio, isAlumni = false }: TeamCardP
       className="relative group cursor-pointer overflow-hidden rounded-lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
