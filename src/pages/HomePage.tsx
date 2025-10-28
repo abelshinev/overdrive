@@ -51,7 +51,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </p>
               <Button
                 onClick={() => onNavigate("events")}
-                className="bg-primary hover:bg-primary/90 text-white"
+                className="bg-primary hover:bg-primary/90 text-button-color "
               >
                 View All Events
                 <ArrowRight size={18} className="ml-2" />
