@@ -101,7 +101,7 @@ export function EventsPage() {
               onClick={() => setFilter(item.value as any)}
               className={
                 filter === item.value
-                  ? "bg-primary text-white"
+                  ? "bg-primary"
                   : "hover:bg-muted"
               }
             >
