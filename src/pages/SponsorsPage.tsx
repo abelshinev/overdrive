@@ -169,7 +169,8 @@ export function SponsorsPage() {
               Join us on our journey to the top of motorsport. Explore
               partnership opportunities and accelerate your brand's presence.
             </p>
-            <button className="bg-primary hover:bg-primary/90 text-black-500 px-8 py-4 rounded-lg transition-colors">
+            <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
+              style={{color: "#000"}}>
               Contact Partnership Team
             </button>
           </motion.div>
