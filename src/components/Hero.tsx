@@ -54,7 +54,7 @@ export function Hero({
             <Button
               onClick={onCtaClick}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-black px-8 py-6 text-lg"
+              className="bg-primary hover:bg-primary/90 px-8 py-6 text-lg"
             >
               {ctaText}
             </Button>
