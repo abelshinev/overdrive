@@ -15,7 +15,17 @@ export function TeamPage() {
   const alumni = getTeamMembersByCategory("alumni");
 
   const handleMemberClick = (memberId: string) => {
-    setSelectedMemberId(memberId);
+    // Scroll to the top of the team section first, with offset to scroll up more
+    const teamSection = document.getElementById("team");
+    if (teamSection) {
+      const yOffset = -100; // Offset to scroll up more
+      const y = teamSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    // Then show the profile after a short delay to allow scroll to complete
+    setTimeout(() => {
+      setSelectedMemberId(memberId);
+    }, 300);
   };
 
   const handleCloseProfile = () => {

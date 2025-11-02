@@ -42,21 +42,62 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
 
     if (!sections.length) return;
 
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 100; // Offset for navbar
+
+      // Find which section is currently in view
+      let currentSection = sections[0];
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop) {
+          currentSection = section;
+          break;
+        }
+      }
+
+      if (currentSection) {
+        onNavigate(currentSection.id);
+      }
+    };
+
+    // Use IntersectionObserver for better performance
     observerRef.current?.disconnect();
     observerRef.current = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          .sort((a, b) => {
+            // Prioritize sections with higher intersection ratio
+            if (Math.abs(b.intersectionRatio - a.intersectionRatio) > 0.1) {
+              return b.intersectionRatio - a.intersectionRatio;
+            }
+            // If ratios are similar, prioritize the one higher on the page
+            return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+          })[0];
         if (visible) {
           onNavigate(visible.target.id);
         }
       },
-      { threshold: [0.25, 0.45, 0.6] }
+      { 
+        threshold: [0.1, 0.25, 0.5, 0.75],
+        rootMargin: '-80px 0px -50% 0px' // Account for navbar height
+      }
     );
 
     sections.forEach((s) => observerRef.current?.observe(s));
-    return () => observerRef.current?.disconnect();
+    
+    // Also listen to scroll events as a fallback
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    
+    // Initial check
+    updateActiveSection();
+
+    return () => {
+      observerRef.current?.disconnect();
+      window.removeEventListener('scroll', updateActiveSection);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

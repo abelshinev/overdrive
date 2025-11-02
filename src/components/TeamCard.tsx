@@ -27,9 +27,7 @@ export function TeamCard({ name, role, image, bio, isAlumni = false, id, onClick
         <img
           src={image}
           alt={name}
-          className={`w-full h-full object-cover ${
-            isAlumni ? "grayscale opacity-60" : ""
-          }`}
+          className="w-full h-full object-cover"
         />
 
         {/* Gradient Overlay */}

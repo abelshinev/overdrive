@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useEffect } from "react";
 import { getTeamMemberById } from "../data/teamMembers";
 import { Button } from "../components/ui/button";
 import { ArrowLeft, Mail, Linkedin, Instagram, Twitter } from "lucide-react";
@@ -10,6 +11,16 @@ interface TeamMemberProfileProps {
 
 export function TeamMemberProfile({ memberId, onClose }: TeamMemberProfileProps) {
   const member = getTeamMemberById(memberId);
+
+  // Scroll to team section when profile opens, with offset to scroll up more
+  useEffect(() => {
+    const teamSection = document.getElementById("team");
+    if (teamSection) {
+      const yOffset = -100; // Offset to scroll up more
+      const y = teamSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [memberId]);
 
   if (!member) {
     return (

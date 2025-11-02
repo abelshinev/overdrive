@@ -24,11 +24,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
         title="Presenting Our Team"
         subtitle="Where precision engineering meets unrelenting speed"
         ctaText="Explore Our Journey"
-        onCtaClick={() => onNavigate("team")}
+        onCtaClick={() => {
+          const victorySection = document.getElementById("victory-section");
+          if (victorySection) {
+            victorySection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }}
       />
 
       {/* Featured News Section */}
-      <section className="bg-background py-24 px-4">
+      <section id="victory-section" className="bg-background py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -12,12 +12,18 @@ import { Toaster } from "./components/ui/sonner";
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
-  
+  const navigateToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setCurrentPage(id);
+    }
+  };
   
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
-      <div id="home"><HomePage onNavigate={setCurrentPage} /></div>
+      <div id="home"><HomePage onNavigate={navigateToSection} /></div>
       <div id="events"><EventsPage /></div>
       <div id="team"><TeamPage /></div>
       <div id="gallery"><GalleryPage /></div>
