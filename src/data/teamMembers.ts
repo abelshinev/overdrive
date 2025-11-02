@@ -208,62 +208,193 @@ export const teamMembers: TeamMember[] = [
   
   // Alumni
   {
-    id: "robert-hamilton",
-    name: "Robert Hamilton",
-    role: "Former Lead Driver",
-    image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    bio: "2018-2022 | 3 Championship titles",
+    id: "saahil-rajesh",
+    name: "Saahil Rajesh",
+    role: "Team Lead",
+    image: "/saahil-rajesh.jpg",
+    bio: "Former team lead who led the team to success.",
     category: "alumni",
-    fullBio: "Robert Hamilton is one of the most decorated drivers in team history. During his tenure from 2018 to 2022, he achieved remarkable success, including 3 championship titles that cemented his legacy. His leadership both on and off the track helped establish Team OverDrive as a championship contender. Robert's technical feedback and driving style were instrumental in car development. After retiring from full-time racing, he continues to contribute to the sport as a consultant and mentor.",
+    fullBio: "Saahil Rajesh was a driving force behind Team OverDrive's success during his tenure. With exceptional leadership skills and a passion for motorsport, Saahil was instrumental in guiding the team forward. His strategic vision and commitment to excellence helped establish the team as a competitive force in racing. Saahil's ability to inspire and unite the team created an environment where everyone could thrive.",
     achievements: [
-      "3 Championship Titles (2019, 2020, 2022)",
-      "All-Time Race Win Leader",
-      "Fastest Lap Record at 5 circuits",
-      "Team Captain (2020-2022)",
-      "Hall of Fame Inductee",
-      "Longest Consecutive Points Scoring Streak"
+      "Team Leadership Excellence",
+      "Strategic Vision Implementation",
+      "Built Strong Team Culture",
+      "Led Team Growth and Development",
+      "Innovation in Team Management",
+      "Outstanding Leadership Award"
     ],
     stats: {
-      races: 98,
-      wins: 27,
-      podiums: 54,
-      championships: 3,
-      poles: 32,
-      fastLaps: 41
-    },
-    contact: {
-      email: "robert.hamilton@former.com",
-      linkedin: "robert-hamilton",
-      twitter: "@hamilton_robert"
-    },
-    yearsWithTeam: "2018-2022"
-  },
-  {
-    id: "maria-santos",
-    name: "Maria Santos",
-    role: "Former Team Principal",
-    image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    bio: "2015-2023 | Led team to championship glory",
-    category: "alumni",
-    fullBio: "Maria Santos was the founding team principal who led Team OverDrive to championship glory. From 2015 to 2023, she built the team from the ground up, creating a culture of excellence, innovation, and teamwork. Her strategic vision and leadership transformed a startup racing team into a championship-winning organization. Maria's dedication to developing talent and fostering innovation has left an enduring legacy. She now serves as an advisor to the motorsport industry.",
-    achievements: [
-      "Founded Team OverDrive (2015)",
-      "Led Team to First Championship (2019)",
-      "Built Championship-Winning Infrastructure",
-      "Industry Leader of the Year (2018)",
-      "Established Team Culture & Values",
-      "Strategic Vision Award (3x)"
-    ],
-    stats: {
-      championships: 1,
+      championships: 0,
       projects: 1
     },
     contact: {
-      email: "maria.santos@former.com",
-      linkedin: "maria-santos-principal",
-      twitter: "@santos_maria"
+      email: "saahil.rajesh@former.com",
+      linkedin: "saahil-rajesh",
+      instagram: "@saahil_rajesh"
     },
-    yearsWithTeam: "2015-2023"
+    yearsWithTeam: "2020-2023"
+  },
+  {
+    id: "vishnu-sudeep",
+    name: "Vishnu Sudeep",
+    role: "Manager",
+    image: "/vishnu-sudeep.jpg",
+    bio: "Former manager who excelled in team coordination and management.",
+    category: "alumni",
+    fullBio: "Vishnu Sudeep brought exceptional management skills to Team OverDrive during his tenure. As the team manager, Vishnu oversaw operations, coordinated activities, and ensured smooth team functioning. His organizational abilities and attention to detail were crucial in managing complex team logistics. Vishnu's commitment to excellence and team coordination significantly contributed to the team's operational success.",
+    achievements: [
+      "Excellent Team Management",
+      "Operational Excellence Award",
+      "Strategic Coordination Mastery",
+      "Streamlined Team Processes",
+      "Outstanding Organizational Skills",
+      "Team Management Innovation"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "vishnu.sudeep@former.com",
+      linkedin: "vishnu-sudeep",
+      instagram: "@vishnu_sudeep"
+    },
+    yearsWithTeam: "2021-2023"
+  },
+  {
+    id: "jerin-job",
+    name: "Jerin Job",
+    role: "Co Manager",
+    image: "/jerin-job.jpg",
+    bio: "Former co-manager who supported team operations with dedication.",
+    category: "alumni",
+    fullBio: "Jerin Job served as the Co Manager of Team OverDrive, working closely with the management team to ensure efficient operations. Jerin's collaborative approach and problem-solving skills were essential in addressing team challenges. With a focus on team support and operational excellence, Jerin helped maintain the high standards that define Team OverDrive.",
+    achievements: [
+      "Team Support Excellence",
+      "Operational Coordination Award",
+      "Effective Problem Solving",
+      "Team Collaboration Leadership",
+      "Process Improvement Initiatives",
+      "Outstanding Co-Management Skills"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "jerin.job@former.com",
+      linkedin: "jerin-job",
+      instagram: "@jerin_job"
+    },
+    yearsWithTeam: "2021-2023"
+  },
+  {
+    id: "savio-sebastian-komath",
+    name: "Savio Sebastian Komath",
+    role: "Vice Captain",
+    image: "/savio-sebastian.jpg",
+    bio: "Former vice captain who led with passion and supported team excellence.",
+    category: "alumni",
+    fullBio: "Savio Sebastian Komath held the position of Vice Captain, playing a crucial role in team leadership and coordination. Savio's leadership style combined passion for motorsport with a strong commitment to team success. His ability to support both management and team members made him an invaluable part of Team OverDrive's leadership structure. Savio's dedication and collaborative spirit inspired the entire team.",
+    achievements: [
+      "Vice Captain Leadership Excellence",
+      "Team Coordination Mastery",
+      "Inspirational Leadership",
+      "Team Support and Development",
+      "Leadership Recognition Award",
+      "Outstanding Team Contribution"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "savio.komath@former.com",
+      linkedin: "savio-sebastian-komath",
+      instagram: "@savio_komath"
+    },
+    yearsWithTeam: "2021-2023"
+  },
+  {
+    id: "vineeth-krishna",
+    name: "Vineeth Krishna",
+    role: "Faculty Advisor",
+    image: "/vineeth-krishna.jpg",
+    bio: "Former faculty advisor who provided expert guidance and academic support.",
+    category: "alumni",
+    fullBio: "Vineeth Krishna served as Faculty Advisor to Team OverDrive, bringing academic expertise and professional guidance to the team. With deep knowledge of engineering principles and practical application, Vineeth helped bridge the gap between theory and practice. His mentorship was instrumental in developing team members' technical skills and ensuring the team maintained high academic and technical standards.",
+    achievements: [
+      "Academic Excellence in Guidance",
+      "Technical Mentorship Award",
+      "Innovation in Engineering Education",
+      "Student Development Excellence",
+      "Outstanding Faculty Support",
+      "Technical Knowledge Transfer"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "vineeth.krishna@former.com",
+      linkedin: "vineeth-krishna",
+      instagram: "@vineeth_krishna"
+    },
+    yearsWithTeam: "2020-2023"
+  },
+  {
+    id: "john-paul",
+    name: "John Paul",
+    role: "Faculty Advisor",
+    image: "/john-paul.jpg",
+    bio: "Former faculty advisor who offered valuable insights and guidance.",
+    category: "alumni",
+    fullBio: "John Paul was a Faculty Advisor for Team OverDrive, providing essential academic and technical guidance. His expertise and mentorship helped team members develop both technical skills and professional competencies. John's support was crucial in helping the team navigate academic requirements while pursuing excellence in motorsport. His commitment to student success and team development was evident in the team's achievements.",
+    achievements: [
+      "Faculty Guidance Excellence",
+      "Student Mentorship Award",
+      "Academic Support Innovation",
+      "Technical Knowledge Contribution",
+      "Outstanding Advisor Recognition",
+      "Team Development Support"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "john.paul@former.com",
+      linkedin: "john-paul",
+      instagram: "@john_paul"
+    },
+    yearsWithTeam: "2020-2023"
+  },
+  {
+    id: "faris-sayed-muhammed",
+    name: "Faris Sayed Muhammed",
+    role: "Mentor",
+    image: "/faris-sayed.jpg",
+    bio: "Former mentor who shared expertise and guided team members toward excellence.",
+    category: "alumni",
+    fullBio: "Faris Sayed Muhammed served as a Mentor to Team OverDrive, bringing valuable experience and expertise to guide team members. His mentorship was instrumental in helping team members develop their skills, overcome challenges, and achieve their goals. Faris's commitment to sharing knowledge and supporting growth made a significant impact on the team's development and success.",
+    achievements: [
+      "Excellence in Mentorship",
+      "Knowledge Sharing Award",
+      "Team Member Development",
+      "Technical Guidance Excellence",
+      "Outstanding Mentor Recognition",
+      "Leadership in Team Growth"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "faris.muhammed@former.com",
+      linkedin: "faris-sayed-muhammed",
+      instagram: "@faris_muhammed"
+    },
+    yearsWithTeam: "2021-2023"
   },
 ];
 
