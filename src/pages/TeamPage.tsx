@@ -39,6 +39,7 @@ export function TeamPage() {
   }
 
   return (
+    
     <div className="min-h-screen pt-20">
       {/* Page Header */}
       <section
