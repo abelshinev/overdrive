@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import { TeamPage } from "./pages/TeamPage"; // or import AlumniPage from "./pages/AlumniPage";
+import { AlumniPage } from "./pages/AlumniPage"; // or import AlumniPage from "./pages/AlumniPage";
 import "./index.css";
 
 const container = document.getElementById("root")!;
@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/alumni" element={<TeamPage />} />
+        <Route path="/alumni" element={<AlumniPage />} />
         {/* add other top-level routes here if needed */}
       </Routes>
     </BrowserRouter>

@@ -5,8 +5,9 @@ import { Button } from "../components/ui/button";
 import { teamMembers, getTeamMembersByCategory } from "../data/teamMembers";
 import { TeamMemberProfile } from "./TeamMemberProfile";
 import { Link } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 
-export function TeamPage() {
+export function AlumniPage() {
   const [showAlumni, setShowAlumni] = useState(false);
   const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
@@ -14,6 +15,7 @@ export function TeamPage() {
   const leadership = getTeamMembersByCategory("leadership");
   const engineering = getTeamMembersByCategory("engineering");
   const alumni = getTeamMembersByCategory("alumni");
+  
 
   const handleMemberClick = (memberId: string) => {
     // Scroll to the top of the team section first, with offset to scroll up more
@@ -39,9 +41,12 @@ export function TeamPage() {
   }
 
   return (
+
+
     
     <div className="min-h-screen pt-20">
       {/* Page Header */}
+
       <section
         className="relative h-96 flex items-center justify-center"
         style={{
