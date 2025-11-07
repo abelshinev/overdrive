@@ -1,49 +1,67 @@
-import React, { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
 export default function Layout() {
-  const [currentPage, setCurrentPage] = useState<string>("home");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // map friendly names to routes (keeps code explicit and easy to extend)
+  const [currentPage, setCurrentPage] = useState("home");
+
+  // Map friendly names to routes
   const routeMap: Record<string, string> = {
+    home: "/",
     alumni: "/alumni",
-    // add other top-level names here if needed: contact: "/contact", etc.
   };
 
+  // Sync highlight with route path
+  useEffect(() => {
+    const path = location.pathname.replace("/", "") || "home";
+    setCurrentPage(path);
+  }, [location]);
+
   const handleNavigate = (target: string) => {
-    // if the Navbar passes a full path (starts with "/"), just navigate there
+    // If full path (starts with "/"), navigate there directly
     if (target.startsWith("/")) {
       navigate(target);
-      setCurrentPage(target.replace("/", "") || "home");
       return;
     }
 
-    // if the target is a named top-level route, navigate there
+    // If named route in routeMap, go there
     if (routeMap[target]) {
       navigate(routeMap[target]);
-      setCurrentPage(target);
       return;
     }
 
-    // otherwise it's a section id: try to scroll; if not found, navigate home with state
+    // Otherwise try scrolling to section within the current page
     const el = document.getElementById(target);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setCurrentPage(target);
       return;
     }
 
-    // navigate to home and pass the intended section through location.state
+    // If section doesn’t exist on this route, navigate home and store scroll target
     navigate("/", { state: { scrollTo: target } });
-    setCurrentPage(target);
   };
+
+  // On load, scroll to section if specified in location.state
+  useEffect(() => {
+    const scrollTarget = (location.state as { scrollTo?: string })?.scrollTo;
+    if (scrollTarget) {
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
   return (
     <>
-      <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
+      <Navbar
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+      />
       <main>
         <Outlet />
       </main>

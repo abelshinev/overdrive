@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { hover, motion } from "motion/react";
+import { motion } from "framer-motion";
 
 interface NavbarProps {
   currentPage: string;
-  onNavigate: (page: string) => void;
+  onNavigate: (target: string) => void; // can be route or section
 }
 
 export function Navbar({ currentPage, onNavigate }: NavbarProps) {
@@ -18,87 +18,39 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
     { id: "gallery", label: "Gallery" },
     { id: "milestones", label: "Milestones" },
     { id: "sponsors", label: "Sponsors" },
+    { id: "alumni", label: "Alumni" }, // external route
   ];
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      onNavigate(id);
-    }
-  };
-
-  // close mobile menu on navigation
-  const handleNav = (id: string) => {
-    scrollTo(id);
+  const handleClick = (id: string) => {
     setOpen(false);
+    onNavigate(id); // delegate to parent
   };
 
-  // Scroll-spy: observe sections and inform parent which is active
+  // Observe visible sections to highlight active nav item
   useEffect(() => {
     const sections = navItems
+      .filter((n) => !["alumni"].includes(n.id)) // skip route-only items
       .map((n) => document.getElementById(n.id))
       .filter(Boolean) as HTMLElement[];
 
     if (!sections.length) return;
 
-    const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + 100; // Offset for navbar
-
-      // Find which section is currently in view
-      let currentSection = sections[0];
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const sectionTop = section.offsetTop;
-        if (scrollPosition >= sectionTop) {
-          currentSection = section;
-          break;
-        }
-      }
-
-      if (currentSection) {
-        onNavigate(currentSection.id);
-      }
-    };
-
-    // Use IntersectionObserver for better performance
-    observerRef.current?.disconnect();
-    observerRef.current = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => {
-            // Prioritize sections with higher intersection ratio
-            if (Math.abs(b.intersectionRatio - a.intersectionRatio) > 0.1) {
-              return b.intersectionRatio - a.intersectionRatio;
-            }
-            // If ratios are similar, prioritize the one higher on the page
-            return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
-          })[0];
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) {
           onNavigate(visible.target.id);
         }
       },
-      { 
-        threshold: [0.1, 0.25, 0.5, 0.75],
-        rootMargin: '-80px 0px -50% 0px' // Account for navbar height
-      }
+      { threshold: [0.3], rootMargin: "-60px 0px -40%" }
     );
 
-    sections.forEach((s) => observerRef.current?.observe(s));
-    
-    // Also listen to scroll events as a fallback
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
-    
-    // Initial check
-    updateActiveSection();
+    sections.forEach((s) => observer.observe(s));
+    observerRef.current = observer;
 
-    return () => {
-      observerRef.current?.disconnect();
-      window.removeEventListener('scroll', updateActiveSection);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -108,12 +60,11 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
           <div className="h-20 flex items-center justify-between">
             {/* Brand */}
             <button
-              onClick={() => handleNav("home")}
-              className="flex items-center gap-3 text-white ml-1 md:ml-0 cursor-pointer"
-              aria-label="Go to Home"
+              onClick={() => handleClick("home")}
+              className="flex items-center gap-3 text-white"
             >
-              <span className="text-2xl md:text-base tracking-tight font-medium">SAE</span>
-              <span className="text-2xl md:text-base px-2 font-extrabold text-primary">
+              <span className="text-2xl font-medium">SAE</span>
+              <span className="text-2xl font-extrabold text-primary">
                 OVERDRIVE
               </span>
             </button>
@@ -125,65 +76,49 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 return (
                   <button
                     key={item.id}
-                    onClick={() => handleNav(item.id)}
-                    className="group relative px-1 py-3 mt-2 text-lg text-gray-400 hover:text-red-500 transition-colors"
-                    aria-current={active ? "page" : undefined}
+                    onClick={() => handleClick(item.id)}
+                    className={`group relative text-gray-300 hover:text-primary uppercase tracking-wider transition-colors ${
+                      active ? "text-white" : ""
+                    }`}
                   >
-                    <span
-                      className={`uppercase tracking-wider cursor-pointer transition-colors ${
-                        active ? "text-white" : "text-gray-300"
-                      } `}
-                    >
-                      {item.label}
-                    </span>
-
-                    {/* animated underline */}
+                    {item.label}
                     <motion.span
-                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      animate={{
-                        scaleX: active ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: active ? 1 : 0 }}
+                      transition={{ duration: 0.3 }}
                     />
                   </button>
                 );
               })}
             </nav>
 
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setOpen((s) => !s)}
-                aria-label="Toggle menu"
-                aria-expanded={open}
-                className="p-2 rounded-md text-white hover:bg-white/5 focus:outline-none"
-              >
-                {open ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden text-white p-2"
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
 
         {/* Mobile dropdown */}
         {open && (
-          <div className="md:hidden bg-black/80 backdrop-blur-sm border-t border-white/6">
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNav(item.id)}
-                  className={`w-full text-left px-3 py-3 rounded-md transition-colors ${
-                    currentPage === item.id
-                      ? "text-white bg-white/5"
-                      : "text-gray-300 hover:text-white hover:bg-white/3"
-                  }`}
-                >
-                  <span className="uppercase tracking-wider">{item.label}</span>
-                </button>
-              ))}
-            </div>
+          <div className="md:hidden bg-black/80 backdrop-blur-sm border-t border-white/10">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleClick(item.id)}
+                className={`block w-full text-left px-6 py-3 uppercase ${
+                  currentPage === item.id
+                    ? "text-white bg-white/10"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         )}
       </div>

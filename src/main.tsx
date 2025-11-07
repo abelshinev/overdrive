@@ -14,9 +14,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         {/* Layout wraps all pages that should include Navbar + Footer */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<App />} />
-          <Route path="alumni" element={<AlumniPage />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<App />} />
+          <Route path="/alumni" element={<AlumniPage />} />
           {/* other child routes */}
         </Route>
       </Routes>
