@@ -1,8 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
 import App from "./App";
-import { AlumniPage } from "./pages/AlumniPage"; // or import AlumniPage from "./pages/AlumniPage";
+import { AlumniPage } from "./pages/AlumniPage";
 import "./index.css";
 
 const container = document.getElementById("root")!;
@@ -12,9 +13,12 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/alumni" element={<AlumniPage />} />
-        {/* add other top-level routes here if needed */}
+        {/* Layout wraps all pages that should include Navbar + Footer */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<App />} />
+          <Route path="alumni" element={<AlumniPage />} />
+          {/* other child routes */}
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

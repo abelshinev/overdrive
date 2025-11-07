@@ -7,31 +7,38 @@ export default function Layout() {
   const [currentPage, setCurrentPage] = useState<string>("home");
   const navigate = useNavigate();
 
-  const handleNavigate = (id: string) => {
-    // some nav items might be whole routes (e.g. alumni)
-    if (id === "alumni") {
-      navigate("/alumni");
-      setCurrentPage(id);
+  // map friendly names to routes (keeps code explicit and easy to extend)
+  const routeMap: Record<string, string> = {
+    alumni: "/alumni",
+    // add other top-level names here if needed: contact: "/contact", etc.
+  };
+
+  const handleNavigate = (target: string) => {
+    // if the Navbar passes a full path (starts with "/"), just navigate there
+    if (target.startsWith("/")) {
+      navigate(target);
+      setCurrentPage(target.replace("/", "") || "home");
       return;
     }
 
-    // Try to scroll to section on the current page
-    const el = document.getElementById(id);
+    // if the target is a named top-level route, navigate there
+    if (routeMap[target]) {
+      navigate(routeMap[target]);
+      setCurrentPage(target);
+      return;
+    }
+
+    // otherwise it's a section id: try to scroll; if not found, navigate home with state
+    const el = document.getElementById(target);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setCurrentPage(id);
+      setCurrentPage(target);
       return;
     }
 
-    // If section not found (we might be on another route) navigate home then scroll
-    navigate("/");
-    setTimeout(() => {
-      const e = document.getElementById(id);
-      if (e) {
-        e.scrollIntoView({ behavior: "smooth", block: "start" });
-        setCurrentPage(id);
-      }
-    }, 80);
+    // navigate to home and pass the intended section through location.state
+    navigate("/", { state: { scrollTo: target } });
+    setCurrentPage(target);
   };
 
   return (
