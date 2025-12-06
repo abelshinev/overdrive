@@ -48,8 +48,8 @@ export function AlumniPage() {
       <section className="bg-card py-16 px-4 border-t border-border">
         {/* Faculty Section */}
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Faculty</h2>
+          <div className="text-center mb-12 pt-8">
+            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Faculty Advisers</h2>
             <br />
           </div>
 
@@ -110,6 +110,29 @@ export function AlumniPage() {
               ))}
             </motion.div>
           }
+        </div>
+      </section>
+
+      <section className="bg-card py-16 px-4 border-t border-border">
+        {/* Group Picture Section */}
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Team Group Photo</h2>
+            <br />
+          </div>
+
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img 
+              src="/group-photo.jpg" 
+              alt="Team Group Photo" 
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </motion.div>
         </div>
       </section>
     </>
