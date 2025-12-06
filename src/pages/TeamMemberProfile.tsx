@@ -34,10 +34,10 @@ export function TeamMemberProfile({ memberId, onClose }: TeamMemberProfileProps)
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground pt-24">
       {/* Hero Section */}
       <section
-        className="relative h-[80vh] flex items-end"
+        className="relative h-[80vh] flex items-end pt-20 md:pt-24"
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${member.image})`,
           backgroundSize: "cover",
