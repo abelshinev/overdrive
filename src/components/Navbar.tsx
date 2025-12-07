@@ -83,7 +83,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                   >
                     {item.label}
                     <motion.span
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      className=""
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: active ? 1 : 0 }}
                       transition={{ duration: 0.3 }}

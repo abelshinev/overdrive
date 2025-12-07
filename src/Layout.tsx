@@ -25,12 +25,15 @@ export default function Layout() {
     // If full path (starts with "/"), navigate there directly
     if (target.startsWith("/")) {
       navigate(target);
+      const path = target.replace("/", "") || "home";
+      setCurrentPage(path);
       return;
     }
 
     // If named route in routeMap, go there
     if (routeMap[target]) {
       navigate(routeMap[target]);
+      setCurrentPage(target);
       return;
     }
 
@@ -38,6 +41,7 @@ export default function Layout() {
     const el = document.getElementById(target);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setCurrentPage(target);
       return;
     }
 
