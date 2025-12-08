@@ -117,7 +117,7 @@ export function AlumniPage() {
         {/* Group Picture Section */}
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Team Group Photo</h2>
+            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Alumni Team Group Photo</h2>
             <br />
           </div>
 
