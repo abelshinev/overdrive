@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Youtube, Facebook } from "lucide-react";
+import { Instagram, Twitter, Youtube, Facebook, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -22,7 +22,7 @@ export function Footer() {
               <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Press</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><a href="mailto:overdriveracingrset@gmail.com" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -31,28 +31,28 @@ export function Footer() {
             <h3 className="text-lg font-medium uppercase tracking-wide mb-4">Follow Us</h3>
             <div className="flex gap-4">
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
+                href="https://www.instagram.com/racing.overdrive/" target="_blank"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
               >
                 <Twitter size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
               >
                 <Youtube size={18} />
               </a>
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
+                href="https://www.linkedin.com/company/sae-rset/" target="_blank"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors transition-500"
               >
-                <Facebook size={18} />
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
@@ -60,6 +60,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border text-center text-lg text-muted-foreground">
           <p>&copy; 2025 OVERDRIVE Racing. All rights reserved.</p>
+          <h1 className="uppercase">Powered by <span className="font-bold font- text-primary"><a href="https://zeyno.my" target="_blank">Studio Zeyno</a></span></h1>
         </div>
       </div>
     </footer>
