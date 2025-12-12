@@ -7,18 +7,18 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <div className="text-2xl tracking-tighter mb-4">
+            <div className="text-2xl tracking-tighter mb-4 font-sans">
               <span className="text-primary font-medium">OVERDRIVE</span> RACING
             </div>
-            <p className="text-muted-foreground text-md">
+            <p className="text-muted-foreground text-md font-serif">
               Pushing the limits of performance and innovation on the track.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-medium uppercase tracking-wide mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-md text-muted-foreground">
+            <h3 className="text-lg font-medium uppercase tracking-wide mb-4 font-sans">Quick Links</h3>
+            <ul className="space-y-2 text-md text-muted-foreground font-serif">
               <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Press</a></li>
@@ -28,7 +28,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-lg font-medium uppercase tracking-wide mb-4">Follow Us</h3>
+            <h3 className="text-lg font-medium uppercase tracking-wide mb-4 font-sans">Follow Us</h3>
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/racing.overdrive/" target="_blank"
@@ -58,9 +58,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border text-center text-lg text-muted-foreground">
+        <div className="mt-12 border-t border-border text-center text-lg text-muted-foreground font-serif">
           <p>&copy; 2025 OVERDRIVE Racing. All rights reserved.</p>
-          <h1 className="uppercase">Powered by <span className="font-bold font- text-primary"><a href="https://zeyno.my" target="_blank">Studio Zeyno</a></span></h1>
+          <h1 className="uppercase font-mono">Powered by <span className="font-bold text-primary"><a href="https://zeyno.my" target="_blank">Studio Zeyno</a></span></h1>
         </div>
       </div>
     </footer>
