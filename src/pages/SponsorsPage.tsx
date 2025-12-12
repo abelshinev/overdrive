@@ -2,26 +2,65 @@ import { motion } from "motion/react";
 import { SponsorLogo } from "../components/SponsorLogo";
 
 export function SponsorsPage() {
-  const platinumSponsors = [
-    "VELOCITY TECH",
-    "PRECISION DYNAMICS",
-  ];
+  const sponsors = {
+    title: {
+      name: "DBiz.ai",
+      tagline: "Impactful Experiences @ Scale",
+      description: "DBiz.ai stands at the forefront of AI-driven engineering and digital innovation. From next-gen product development to powerful cloud and data platforms, DBiz.ai accelerates transformation with precision, intelligence, and unmatched technical excellence. A true force behind our pursuit of peak performance.",
+      image: "sponsorship/dbizai.png",
+    },
+    premium: [
+      {
+        name: "ENVERTIZ CONSULTANCY",
+        tagline: "Global Healthcare Careers Made Simple",
+        description: "A leading UK-based recruitment powerhouse, Envertiz empowers nursing professionals worldwide with expert training, streamlined documentation, and seamless relocation to globally recognized healthcare systems. A brand defined by trust, opportunities, and world-class mobility.",
+        image: "sponsorship/envertiz.png",
+      },
+      {
+        name: "BLACK AND WHITE VENTURES",
+        tagline: "Building Quality. Delivering Reliability.",
+        description: "A multidisciplinary construction firm redefining residential excellence. From foundations to flawless finishes, Black and White Ventures delivers precision-built homes and apartments—while also offering secure, well-managed rental spaces. Where craftsmanship meets commitment.",
+        image: "sponsorship/bnwventures.png",
+      },
+      {
+        name: "M&G HOLIDAYS",
+        tagline: "Your Gateway to the World",
+        description: "Masters of curated travel, M&G Holidays unlock unforgettable journeys through tailored domestic and international packages, premium visa support, and smooth end-to-end trip planning. Turning every vacation into a world-class experience.",
+        image: "sponsorship/mandgholidays.png",
+      },
+      {
+        name: "CLUB HIGHLANDER",
+        tagline: "Where Luxury Meets Nature",
+        description: "Set in the misty highlands of Vagamon, Club Highlander blends boutique hospitality with breathtaking landscapes. Cozy bungalows, intimate ambience, and elevated comfort create the perfect hillside escape. An unmatched retreat for those who rise above the ordinary.",
+        image: "sponsorship/clubhighlander.png",
+      },
+    ],
+    performance: [
+      { 
+        name: "MOTUL",
+        tagline: "Performance Lubricants Trusted by Champions",
+        description: "A global icon in high-performance synthetic engine oils, Motul delivers cutting-edge lubrication engineered for endurance, power, and precision. Motorsport-tested and race-proven. Because champions run on nothing less.",
+        image: "sponsorship/MOTUL.png",
+      },
+    ]
+  };
 
-  const goldSponsors = [
-    "APEX SYSTEMS",
-    "MOTORSPORT PRO",
-    "RACING ELITE",
-    "SPEEDFORCE",
-  ];
-
-  const silverSponsors = [
-    "PERFORMANCE PLUS",
-    "TRACK MASTERS",
-    "AERODYNAMIX",
-    "FUEL EXPERTS",
-    "TIRE INNOVATIONS",
-    "DATA ANALYTICS",
-  ];
+  const SponsorCard = ({ sponsor }: { sponsor: typeof sponsors.premium[0] }) => (
+    <motion.div
+      className="bg-black/40 border border-primary/20 rounded-lg p-8 hover:border-primary/50 transition-colors"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <img src={sponsor.image} alt={sponsor.name} className="w-full mb-6 object-contain" />
+      <h3 className="text-2xl font-bold text-primary mb-2 uppercase tracking-wide">
+        {sponsor.name}
+      </h3>
+      <p className="text-sm text-muted-foreground mb-4 italic">{sponsor.tagline}</p>
+      <p className="text-base text-gray-300 leading-relaxed">{sponsor.description}</p>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen pt-20">
@@ -45,113 +84,82 @@ export function SponsorsPage() {
             Our Partners
           </h1>
           <p className="text-xl text-muted-foreground">
-            Excellence is built on powerful partnerships
+            Powering Performance. Fueling Ambition.
           </p>
         </motion.div>
       </section>
 
-      {/* Partnership Message */}
-      <section className="bg-background py-16 px-4 border-b border-border">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* Title Sponsor */}
+      <section className="bg-background py-20 px-4 border-b border-border">
+        <div className="w-5/6 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center mx-auto w-5/6 px-4"
           >
-            <p className="text-lg text-muted-foreground">
-              Our success is powered by world-class partners who share our
-              passion for innovation, performance, and excellence. Together,
-              we're pushing the boundaries of what's possible in motorsport.
-            </p>
+            <h2 className="text-6xl uppercase tracking-tight text-primary mb-20 font-bold">
+              TITLE SPONSOR
+            </h2>
+            <div className="flex gap-20">
+              <img src="sponsorship/dbizai.png" alt="" style={{height: "40vh", width: "auto"}}/>
+              <div className="text-left my-auto">
+                <h3 className="text-4xl md:text-5xl font-bold mb-3">{sponsors.title.name}</h3>
+                <p className="text-lg text-muted-foreground mb-6 italic">{sponsors.title.tagline}</p>
+                <p className="text-base text-gray-300 leading-relaxed">{sponsors.title.description}</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Platinum Tier */}
-      <section className="bg-background py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
+      {/* Premium Sponsors */}
+      <section className="bg-black/50 py-20 px-4 border-b border-border">
+        <div className="w-5/6 mx-auto">
+          <motion.h2
+            className="text-6xl uppercase tracking-tight text-primary mb-12 font-bold text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
           >
-            <h2 className="text-3xl mb-2">Platinum Partners</h2>
-            <div className="h-1 w-24 bg-accent mx-auto" />
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {platinumSponsors.map((sponsor, index) => (
-              <motion.div
-                key={sponsor}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <SponsorLogo name={sponsor} tier="platinum" />
-              </motion.div>
+            PREMIUM SPONSORS
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {sponsors.premium.map((sponsor, idx) => (
+              <SponsorCard key={idx} sponsor={sponsor} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gold Tier */}
-      <section className="bg-card py-16 px-4 border-y border-border">
-        <div className="max-w-7xl mx-auto">
+      {/* Performance Partner */}
+      <section className="bg-background py-20 px-4 border-b border-border">
+        <div className="w-5/6 mx-auto ">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center"
           >
-            <h2 className="text-3xl mb-2">Gold Partners</h2>
-            <div className="h-1 w-24 bg-yellow-500 mx-auto" />
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {goldSponsors.map((sponsor, index) => (
-              <motion.div
-                key={sponsor}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <SponsorLogo name={sponsor} tier="gold" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Silver Tier */}
-      <section className="bg-background py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl mb-2">Silver Partners</h2>
-            <div className="h-1 w-24 bg-gray-500 mx-auto" />
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {silverSponsors.map((sponsor, index) => (
-              <motion.div
-                key={sponsor}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <SponsorLogo name={sponsor} tier="silver" />
-              </motion.div>
-            ))}
-          </div>
+            <h2 className="text-6xl uppercase tracking-tight text-primary mb-4 font-bold">
+              PERFORMANCE PARTNER
+            </h2>
+            <div>
+              {sponsors.performance.map((sponsor, idx) => (
+                <div key={idx} className="mb-12 last:mb-0 flex gap-20" >
+                  <img src={sponsor.image} alt={sponsor.name} className="w-1/3 mr-12 object-contain" />
+                  <div className="text-left my-auto">
+                    <h3 className="text-4xl md:text-5xl font-bold mb-3">{sponsor.name}</h3>
+                    <p className="text-lg text-muted-foreground mb-6 italic">{sponsor.tagline}</p>
+                    <p className="text-base text-gray-300 leading-relaxed">{sponsor.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            </motion.div>
         </div>
       </section>
 
@@ -166,8 +174,7 @@ export function SponsorsPage() {
           >
             <h2 className="text-4xl md:text-5xl mb-6">Become a Partner</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join us on our journey to the top of motorsport. Explore
-              partnership opportunities and accelerate your brand's presence.
+              Together, We Race Beyond Limits.
             </p>
             <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
               style={{color: "#000"}}>
