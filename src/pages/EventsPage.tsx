@@ -8,11 +8,12 @@ export function EventsPage() {
 
   const events = [
     {
-      title: "Bahrain Grand Prix",
-      date: "March 2, 2025",
-      location: "Sakhir, Bahrain",
+      title: "SAE Supra",
+      date: "August 12-16, 2025",
+      location: "Buddh International Circuit, Noida",
       image: "https://images.unsplash.com/photo-1735636134481-1c6ef7f8df49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjaXJjdWl0JTIwYWVyaWFsfGVufDF8fHx8MTc2MDE4MjE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      isPast: false,
+      isPast: true,
+      result: "AIR 30"
     },
     {
       title: "Saudi Arabian Grand Prix",
@@ -21,37 +22,7 @@ export function EventsPage() {
       image: "https://images.unsplash.com/photo-1736122054520-f17c2adfc7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3JtdWxhJTIwb25lJTIwcmFjZSUyMHRyYWNrfGVufDF8fHx8MTc2MDI2Njc4MXww&ixlib=rb-4.1.0&q=80&w=1080",
       isPast: false,
     },
-    {
-      title: "Australian Grand Prix",
-      date: "March 16, 2025",
-      location: "Melbourne, Australia",
-      image: "https://images.unsplash.com/photo-1696841749266-7a38fecbcaad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjYXIlMjB0cmFjayUyMG1vdGlvbnxlbnwxfHx8fDE3NjAyNjY3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      isPast: false,
-    },
-    {
-      title: "Monaco Grand Prix",
-      date: "January 15, 2025",
-      location: "Monte Carlo, Monaco",
-      image: "https://images.unsplash.com/photo-1757513915354-d596d3aaf2ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3RvcnNwb3J0JTIwdGVhbSUyMGdhcmFnZXxlbnwxfHx8fDE3NjAyNjY3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      isPast: true,
-      result: "P2",
-    },
-    {
-      title: "Italian Grand Prix",
-      date: "December 3, 2024",
-      location: "Monza, Italy",
-      image: "https://images.unsplash.com/photo-1705909706873-5432b644ccec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBjYXIlMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc2MDI2Njc4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      isPast: true,
-      result: "P5",
-    },
-    {
-      title: "Japanese Grand Prix",
-      date: "November 20, 2024",
-      location: "Suzuka, Japan",
-      image: "https://images.unsplash.com/photo-1735636134481-1c6ef7f8df49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjaXJjdWl0JTIwYWVyaWFsfGVufDF8fHx8MTc2MDE4MjE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      isPast: true,
-      result: "P3",
-    },
+    
   ];
 
   const filteredEvents = events.filter((event) => {

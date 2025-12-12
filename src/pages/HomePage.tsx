@@ -18,7 +18,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
   ];
 
   return (
-    <div>
+    <div className="font-sans border-4 border-red-500">
       <Hero
         image="herobg.jpg"
         title="Presenting Our Team"
@@ -108,28 +108,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Sponsors Strip */}
-      <section className="bg-background py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-center text-sm uppercase tracking-wide text-muted-foreground mb-12">
-            Our Partners
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {sponsors.map((sponsor, index) => (
-              <motion.div
-                key={sponsor}
-                className="flex items-center justify-center text-muted-foreground hover:text-primary transition-colors text-lg tracking-wider"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {sponsor}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
