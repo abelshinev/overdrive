@@ -34,6 +34,10 @@ export default function Layout() {
     if (routeMap[target]) {
       navigate(routeMap[target]);
       setCurrentPage(target);
+      // Scroll to top for home page
+      if (target === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
       return;
     }
 

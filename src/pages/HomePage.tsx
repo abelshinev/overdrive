@@ -18,7 +18,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
   ];
 
   return (
-    <div className="font-sans border-4 border-red-500">
+    <div className="font-sans border-4 ">
       <Hero
         image="herobg.jpg"
         title="Presenting Our Team"
