@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { TeamCard } from "../components/TeamCard";
 import { Button } from "../components/ui/button";
-import { teamMembers, getTeamMembersByCategory } from "../data/teamMembers";
+import { teamMembers, getTeamMembersByCategory } from "../lib/teamMembers";
 import { TeamMemberProfile } from "./TeamMemberProfile";
 import { Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";

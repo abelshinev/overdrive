@@ -8,14 +8,7 @@ interface HomePageProps {
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
-  const sponsors = [
-    "VELOCITY",
-    "APEX TECH",
-    "PRECISION",
-    "MOTORSPORT PRO",
-    "RACING ELITE",
-    "SPEEDFORCE",
-  ];
+  
 
   return (
     <div className="font border-4 ">

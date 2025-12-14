@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
-import { getTeamMemberById } from "../data/teamMembers";
+import { getTeamMemberById } from "../lib/teamMembers";
 import { Button } from "../components/ui/button";
 import { ArrowLeft, Mail, Linkedin, Instagram, Twitter } from "lucide-react";
 
