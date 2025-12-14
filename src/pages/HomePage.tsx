@@ -18,7 +18,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
   ];
 
   return (
-    <div className="font-sans border-4 ">
+    <div className="font border-4 ">
       <Hero
         image="herobg.jpg"
         title="Presenting Our Team"
@@ -47,29 +47,31 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 Latest Update
               </div>
               <h2 className="text-4xl md:text-5xl mb-6">
-                Victory at Buddh International Circuit
+                Launch of Overdrive Socials
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                Our team secured a historic podium finish at the iconic Buddh
-                circuit, marking our best performance of the season. Read about
-                the strategy, challenges, and triumph.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa
+                fugit possimus nesciunt suscipit non dicta ipsum ad repellat ut 
+                eligendi sapiente, minus iusto temporibus asperiores a esse.
               </p>
-              <Button
-                onClick={() => onNavigate("events")}
-                className="bg-primary hover:bg-primary/90 "
-              >
-                View All Events
-                <ArrowRight size={18} className="ml-2" />
-              </Button>
+              <a href="https://www.instagram.com/p/DNIUzhEzovL/">
+                <Button
+                  onClick={() => onNavigate("events")}
+                  className="bg-primary hover:bg-primary/90 "
+                >
+                  View Post on Instagram
+                  <ArrowRight size={18} className="ml-2" />
+                </Button>
+               </a>
             </div>
             <motion.div
-              className="relative h-96 rounded-lg overflow-hidden"
+              className="relative  rounded-lg overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1736122054520-f17c2adfc7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3JtdWxhJTIwb25lJTIwcmFjZSUyMHRyYWNrfGVufDF8fHx8MTc2MDI2Njc4MXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Monaco GP"
+                src = "post.png"
+                alt="Instagram Post"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
