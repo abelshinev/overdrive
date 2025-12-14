@@ -1,10 +1,11 @@
 import { motion } from "motion/react";
 import { Trophy } from "lucide-react";
+import { JSX } from "react";
 
 interface TimelineItemProps {
   year: string;
   title: string;
-  description: string;
+  description: Array<string>;
   image?: string;
   side: "left" | "right";
 }
@@ -36,7 +37,11 @@ export function TimelineItem({
             {year}
           </div>
           <h3 className="text-2xl mb-3">{title}</h3>
-          <p className="text-muted-foreground">{description}</p>
+          <ul className="text-muted-foreground">{
+            description.map((point, idx) => (
+              <li className="list-disc ml-8 leading-relaxed text-left " key={idx}>{point}</li>
+            ))
+            } </ul>
           {image && (
             <img
               src={image}
