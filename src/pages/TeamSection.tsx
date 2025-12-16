@@ -159,7 +159,7 @@ export function TeamPage() {
             <Button
               variant="outline"
               onClick={() => setShowAlumni(!showAlumni)}
-              className="bg-primary hover:bg-white cursor-pointer p-8 text-xl hover:text-white hover:border-primary"
+              className="bg-primary hover:bg-white cursor-pointer p-8 rounded-xl text-xl text-black hover:border-primary"
             >
               Visit Our Alumni Page
             </Button>

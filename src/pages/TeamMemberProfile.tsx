@@ -14,12 +14,8 @@ export function TeamMemberProfile({ memberId, onClose }: TeamMemberProfileProps)
 
   // Scroll to team section when profile opens, with offset to scroll up more
   useEffect(() => {
-    const teamSection = document.getElementById("team");
-    if (teamSection) {
-      const yOffset = -100; // Offset to scroll up more
-      const y = teamSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
+    // Ensure the profile view always starts at the top of the page
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [memberId]);
 
   if (!member) {
@@ -44,12 +40,12 @@ export function TeamMemberProfile({ memberId, onClose }: TeamMemberProfileProps)
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute top-4 left-4 z-50">
+        <div className="fixed top-6 left-4 z-50">
           <Button
             variant="outline"
             size="lg"
             onClick={onClose}
-            className="backdrop-blur-lg bg-black/50 border-white/20 hover:bg-white/10 hover:border-primary"
+            className="text-md font-thin font-sans absolutebackdrop-blur-lg bg-black/50 border-white/20 hover:bg-white/10 hover:border-primary"
           >
             <ArrowLeft className="mr-2" />
             Back to Team

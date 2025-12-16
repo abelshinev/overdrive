@@ -21,17 +21,8 @@ export function AlumniPage() {
   
 
   const handleMemberClick = (memberId: string) => {
-    // Scroll to the top of the team section first, with offset to scroll up more
-    const teamSection = document.getElementById("team");
-    if (teamSection) {
-      const yOffset = -100; // Offset to scroll up more
-      const y = teamSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    // Then show the profile after a short delay to allow scroll to complete
-    setTimeout(() => {
-      setSelectedMemberId(memberId);
-    }, 300);
+    // Open profile immediately; TeamMemberProfile handles scrolling to top
+    setSelectedMemberId(memberId);
   };
 
   const handleCloseProfile = () => {
@@ -49,8 +40,8 @@ export function AlumniPage() {
         {/* Faculty Section */}
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 pt-8">
-            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Faculty Advisers</h2>
-            <br />
+            <h2 className="text-4xl mt-6 uppercase tracking-tighter font">Faculty Advisers</h2>
+            
           </div>
 
           {
