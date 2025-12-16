@@ -13,10 +13,10 @@ export function AlumniPage() {
 
   const allAlumni = getTeamMembersByCategory("alumni");
   const faculty = allAlumni.filter(member => 
-    member.id === "vineeth-krishna" || member.id === "john-paul"
+    member.id === "vineeth-krishna" || member.id === "john-paul" || member.id === "jerin-thankachan"
   );
   const alumni = allAlumni.filter(member => 
-    member.id !== "vineeth-krishna" && member.id !== "john-paul"
+    member.id !== "vineeth-krishna" && member.id !== "john-paul" && member.id !== "jerin-thankachan"
   );
   
 
@@ -38,7 +38,7 @@ export function AlumniPage() {
     <>
       <section className="bg-card py-16 px-4 border-t border-border">
         {/* Faculty Section */}
-        <div className="max-w-7xl mx-auto">
+        <div className="w-7xl mx-auto">
           <div className="text-center mb-12 pt-8">
             <h2 className="text-4xl mt-6 uppercase tracking-tighter font">Faculty Advisers</h2>
             
@@ -46,7 +46,7 @@ export function AlumniPage() {
 
           {
             <motion.div
-              className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+              className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -123,6 +123,7 @@ export function AlumniPage() {
               alt="Team Group Photo" 
               className="w-full h-auto rounded-lg shadow-lg"
             />
+            <h2 className="text-center text-4xl font-semibold mt-8">"Founding Fathers - Rogue Motorsport"</h2>
           </motion.div>
         </div>
       </section>

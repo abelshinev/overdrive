@@ -317,10 +317,10 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "vineeth-krishna",
-    name: "Vineeth Krishna",
+    name: "Mr. Vineeth Krishna P",
     role: "Faculty Advisor",
     image: "/vineeth-krishna.jpg",
-    bio: "Former faculty advisor who provided expert guidance and academic support.",
+    bio: "Assistant Professor Department of Mechanical Engineering.",
     category: "alumni",
     fullBio: "Vineeth Krishna served as Faculty Advisor to Team OverDrive, bringing academic expertise and professional guidance to the team. With deep knowledge of engineering principles and practical application, Vineeth helped bridge the gap between theory and practice. His mentorship was instrumental in developing team members' technical skills and ensuring the team maintained high academic and technical standards.",
     achievements: [
@@ -336,18 +336,18 @@ export const teamMembers: TeamMember[] = [
       innovations: 1
     },
     contact: {
-      email: "vineeth.krishna@former.com",
-      linkedin: "vineeth-krishna",
+      email: "vineethkp@rajagiritech.edu.in",
+      linkedin: "vineeth-krishna-p",
       instagram: "@vineeth_krishna"
     },
     yearsWithTeam: "2020-2023"
   },
   {
     id: "john-paul",
-    name: "John Paul",
+    name: "Mr. John Paul C. D.",
     role: "Faculty Advisor",
     image: "/john-paul.jpg",
-    bio: "Former faculty advisor who offered valuable insights and guidance.",
+    bio: "Assistant Professor Department of Mechanical Engineering ",
     category: "alumni",
     fullBio: "John Paul was a Faculty Advisor for Team OverDrive, providing essential academic and technical guidance. His expertise and mentorship helped team members develop both technical skills and professional competencies. John's support was crucial in helping the team navigate academic requirements while pursuing excellence in motorsport. His commitment to student success and team development was evident in the team's achievements.",
     achievements: [
@@ -363,8 +363,35 @@ export const teamMembers: TeamMember[] = [
       innovations: 1
     },
     contact: {
-      email: "john.paul@former.com",
-      linkedin: "john-paul",
+      email: "johnp@rajagiritech.edu.in",
+      linkedin: "john-paul-35a5bb1b3",
+      instagram: "@john_paul"
+    },
+    yearsWithTeam: "2020-2023"
+  },
+  {
+    id: "jerin-thankachan",
+    name: "Mr. Jerin Thankachan",
+    role: "Faculty Advisor",
+    image: "/jerin-thankachan.png",
+    bio: "Technical Assistant, Department of Mechanical Engineering ",
+    category: "alumni",
+    fullBio: "John Paul was a Technical Assistant Faculty Advisor for Team OverDrive, providing essential academic and technical guidance. His expertise and mentorship helped team members develop both technical skills and professional competencies. John's support was crucial in helping the team navigate academic requirements while pursuing excellence in motorsport. His commitment to student success and team development was evident in the team's achievements.",
+    achievements: [
+      "Faculty Guidance Excellence",
+      "Student Mentorship Award",
+      "Academic Support Innovation",
+      "Technical Knowledge Contribution",
+      "Outstanding Advisor Recognition",
+      "Team Development Support"
+    ],
+    stats: {
+      projects: 1,
+      innovations: 1
+    },
+    contact: {
+      email: "johnp@rajagiritech.edu.in",
+      linkedin: " john-paul-35a5bb1b3",
       instagram: "@john_paul"
     },
     yearsWithTeam: "2020-2023"
