@@ -7,9 +7,12 @@ import { GalleryPage } from "./pages/GalleryPage";
 import { MilestonesPage } from "./pages/MilestonesPage";
 import { SponsorsPage } from "./pages/SponsorsPage";
 import { Toaster } from "./components/ui/sonner";
+import LoadingScreen from "./components/LoadingScreen";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [showSplash, setShowSplash] = useState(true);
+  const [splashFading, setSplashFading] = useState(false);
   const location = useLocation();
 
   const scrollToSection = (id: string) => {
@@ -28,15 +31,29 @@ export default function App() {
     }
   }, [location]);
 
+  // Show company loading splash for 700ms on first mount
+  useEffect(() => {
+    // After 700ms start fade, then unmount after fade duration (300ms)
+    const t1 = setTimeout(() => setSplashFading(true), 700);
+    const t2 = setTimeout(() => setShowSplash(false), 700 + 300);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
   return (
-    <div className="space-y-20">
-      <div id="home"><HomePage onNavigate={scrollToSection} /></div>
-      <div id="events"><EventsPage /></div>
-      <div id="team"><TeamPage /></div>
-      <div id="gallery"><GalleryPage /></div>
-      <div id="milestones"><MilestonesPage /></div>
-      <div id="sponsors"><SponsorsPage /></div>
-      <Toaster />
-    </div>
+    <>
+      <LoadingScreen visible={showSplash} fade={splashFading} />
+      <div className="space-y-20">
+        <div id="home"><HomePage onNavigate={scrollToSection} /></div>
+        <div id="events"><EventsPage /></div>
+        <div id="team"><TeamPage /></div>
+        <div id="gallery"><GalleryPage /></div>
+        <div id="milestones"><MilestonesPage /></div>
+        <div id="sponsors"><SponsorsPage /></div>
+        <Toaster />
+      </div>
+    </>
   );
 }
