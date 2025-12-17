@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { GalleryItem } from "../components/GalleryItem";
 import { Button } from "../components/ui/button";
@@ -7,59 +7,27 @@ import { X } from "lucide-react";
 export function GalleryPage() {
   const [filter, setFilter] = useState("all");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [images, setImages] = useState<Array<{ image: string; title: string; category: string }>>([]);
 
-  const images = [
-    {
-      image: "https://images.unsplash.com/photo-1696841749266-7a38fecbcaad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjYXIlMjB0cmFjayUyMG1vdGlvbnxlbnwxfHx8fDE3NjAyNjY3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Monaco Night Race",
-      category: "events",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1736122054520-f17c2adfc7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3JtdWxhJTIwb25lJTIwcmFjZSUyMHRyYWNrfGVufDF8fHx8MTc2MDI2Njc4MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Circuit Victory",
-      category: "events",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1757513915354-d596d3aaf2ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3RvcnNwb3J0JTIwdGVhbSUyMGdhcmFnZXxlbnwxfHx8fDE3NjAyNjY3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Garage Preparation",
-      category: "behind-the-scenes",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1552255472-3330e5928013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNlJTIwY2FyJTIwZHJpdmVyJTIwaGVsbWV0fGVufDF8fHx8MTc2MDE0OTM1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Driver Focus",
-      category: "team",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1735636134481-1c6ef7f8df49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjaXJjdWl0JTIwYWVyaWFsfGVufDF8fHx8MTc2MDE4MjE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Track Overview",
-      category: "car",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1705909706873-5432b644ccec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBjYXIlMjBjbG9zZSUyMHVwfGVufDF8fHx8MTc2MDI2Njc4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Engineering Detail",
-      category: "car",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1696841749266-7a38fecbcaad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWNpbmclMjBjYXIlMjB0cmFjayUyMG1vdGlvbnxlbnwxfHx8fDE3NjAyNjY3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Speed Blur",
-      category: "car",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1757513915354-d596d3aaf2ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3RvcnNwb3J0JTIwdGVhbSUyMGdhcmFnZXxlbnwxfHx8fDE3NjAyNjY3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Pit Strategy",
-      category: "behind-the-scenes",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1736122054520-f17c2adfc7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3JtdWxhJTIwb25lJTIwcmFjZSUyMHRyYWNrfGVufDF8fHx8MTc2MDI2Njc4MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      title: "Team Celebration",
-      category: "team",
-    },
-  ];
+  useEffect(() => {
+    fetch("/gallery/manifest.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("manifest not found");
+        return r.json();
+      })
+      .then((manifest: Array<{ file: string; title?: string; category?: string }>) => {
+        const mapped = manifest.map((m) => ({
+          image: `/gallery/${m.file}`,
+          title: m.title || m.file,
+          category: m.category || "gallery",
+        }));
+        setImages(mapped);
+      })
+      .catch(() => setImages([]));
+  }, []);
 
   const filteredImages =
-    filter === "all"
-      ? images
-      : images.filter((img) => img.category === filter);
+    filter === "all" ? images : images.filter((img) => img.category === filter);
 
   return (
     <div className="min-h-screen pt-20">
@@ -117,24 +85,24 @@ export function GalleryPage() {
       {/* Gallery Grid */}
       <section className="bg-background py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            layout
-          >
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                layout
-              >
-                <GalleryItem
-                  {...image}
-                  onClick={() => setSelectedImage(index)}
-                />
-              </motion.div>
-            ))}
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" layout>
+            {filteredImages.length === 0 ? (
+              <div className="col-span-3 text-center text-muted-foreground py-20">
+                No gallery images found. Add images to <strong>/public/gallery</strong> or update the manifest.
+              </div>
+            ) : (
+              filteredImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  layout
+                >
+                  <GalleryItem {...image} onClick={() => setSelectedImage(index)} />
+                </motion.div>
+              ))
+            )}
           </motion.div>
         </div>
       </section>
