@@ -108,20 +108,34 @@ export function AlumniPage() {
         {/* Group Picture Section */}
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl mb-6 uppercase tracking-tighter">Alumni Team Group Photo</h2>
+            <h2 className="text-4xl uppercase tracking-tighter">Alumni Team Group Photo</h2>
             <br />
           </div>
 
           <motion.div
-            className="max-w-4xl mx-auto"
+            className="max-w-8xl mx-auto "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <img 
+                src="/alumni/group/group-photo-1.png" 
+                alt="Team Group Photo" 
+                className="w-full h-[400px] rounded-lg shadow-lg"
+              />
+              <img 
+                src="/alumni/group/group-photo-2.png" 
+                alt="Team Group Photo" 
+                className="w-full h-[400px] rounded-lg shadow-lg"
+              />
+            </div>
+            
             <img 
-              src="/group-photo.jpg" 
+              src="/alumni/group/group-photo.jpg" 
               alt="Team Group Photo" 
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-auto h-[500px] mt-10  rounded-lg shadow-lg mx-auto"
             />
             <h2 className="text-center text-4xl font-semibold mt-8">"Founding Fathers - Rogue Motorsport"</h2>
           </motion.div>
