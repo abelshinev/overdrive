@@ -63,9 +63,9 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
               onClick={() => handleClick("home")}
               className="flex items-center gap-2 text-white"
             >
-              <span className="text-2xl font-medium">SAE</span>
-              <span className="text-2xl font-bold text-primary">
-                OVERDRIVE
+              <span className="text-2xl text-primary font-bold">OVERDRIVE</span>
+              <span className="text-2xl font-medium tracking-tighter">
+                RACING
               </span>
             </button>
 
