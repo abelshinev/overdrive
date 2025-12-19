@@ -8,6 +8,7 @@ import { MilestonesPage } from "./pages/MilestonesPage";
 import { SponsorsPage } from "./pages/SponsorsPage";
 import { Toaster } from "./components/ui/sonner";
 import LoadingScreen from "./components/LoadingScreen";
+import { RSETPage } from "./pages/RSETPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -47,6 +48,7 @@ export default function App() {
       <LoadingScreen visible={showSplash} fade={splashFading} />
       <div className="space-y-20">
         <div id="home"><HomePage onNavigate={scrollToSection} /></div>
+        <div id="rset"><RSETPage /></div>
         <div id="events"><EventsPage /></div>
         <div id="team"><TeamPage /></div>
         <div id="gallery"><GalleryPage /></div>

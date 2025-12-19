@@ -73,36 +73,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="bg-card py-24 px-4 border-y border-border">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Races", value: "24" },
-              { label: "Podiums", value: "8" },
-              { label: "Championships", value: "3" },
-              { label: "Team Members", value: "120+" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-5xl md:text-6xl text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground uppercase tracking-wide text-sm">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }
