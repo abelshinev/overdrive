@@ -24,9 +24,12 @@ export default function App() {
     }
   };
 
-  // Handles scrolling when coming back from another route
+  // Handles scrolling when coming back from another route or directly via URL
   useEffect(() => {
-    const target = location.state?.scrollTo;
+    // Priority: state.scrollTo > pathname section
+    const pathSection = location.pathname.substring(1); // remove leading '/'
+    const target = location.state?.scrollTo || (pathSection && pathSection !== "home" ? pathSection : null);
+
     if (target) {
       setTimeout(() => scrollToSection(target), 100);
     }
