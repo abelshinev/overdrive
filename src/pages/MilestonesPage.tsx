@@ -37,6 +37,8 @@ export function MilestonesPage() {
           {/* Central Timeline Line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2 hidden md:block" />
 
+          <div className="absolute left-[8px] md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 md:-translate-x-1/2" />
+
           {/* Milestones */}
           <div className="space-y-0">
             {milestones.map((milestone, index) => (
