@@ -3,7 +3,7 @@ import { SponsorLogo } from "../components/SponsorLogo";
 import sponsors from "../lib/sponsors";
 
 export function SponsorsPage() {
-  
+
 
   const SponsorCard = ({ sponsor }: { sponsor: typeof sponsors.premium[0] }) => (
     <motion.div
@@ -51,19 +51,19 @@ export function SponsorsPage() {
 
       {/* Title Sponsor */}
       <section className="bg-background py-20 px-4 border-b border-border">
-        <div className="w-5/6 mx-auto">
+        <div className="w-full md:w-5/6 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mx-auto w-5/6 px-4"
+            className="text-center mx-auto w-full md:w-5/6 px-4"
           >
-            <h2 className="text-6xl uppercase tracking-tight text-primary mb-20 font-bold">
+            <h2 className="text-4xl md:text-6xl uppercase tracking-tight text-primary mb-12 md:mb-20 font-bold">
               TITLE SPONSOR
             </h2>
-            <div className="flex gap-20">
-              <img src="sponsorship/dbizai.png" alt="" style={{height: "40vh", width: "auto"}}/>
+            <div className="flex flex-col md:flex-row gap-8 md:gap-20 items-center">
+              <img src="sponsorship/dbizai.png" alt="" className="w-full h-auto md:h-[40vh] object-contain md:w-auto" />
               <div className="text-left my-auto">
                 <h3 className="text-4xl md:text-5xl font-bold mb-3">{sponsors.title.name}</h3>
                 <p className="text-lg text-muted-foreground mb-6 italic">{sponsors.title.tagline}</p>
@@ -76,9 +76,9 @@ export function SponsorsPage() {
 
       {/* Premium Sponsors */}
       <section className="bg-black/50 py-20 px-4 border-b border-border">
-        <div className="w-5/6 mx-auto">
+        <div className="w-full md:w-5/6 mx-auto">
           <motion.h2
-            className="text-6xl uppercase tracking-tight text-primary mb-12 font-bold text-center"
+            className="text-4xl md:text-6xl uppercase tracking-tight text-primary mb-12 font-bold text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -96,7 +96,7 @@ export function SponsorsPage() {
 
       {/* Performance Partner */}
       <section className="bg-background py-20 px-4 border-b border-border">
-        <div className="w-5/6 mx-auto ">
+        <div className="w-full md:w-5/6 mx-auto ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,13 +104,13 @@ export function SponsorsPage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-6xl uppercase tracking-tight text-primary mb-4 font-bold">
+            <h2 className="text-4xl md:text-6xl uppercase tracking-tight text-primary mb-12 md:mb-4 font-bold">
               PERFORMANCE PARTNER
             </h2>
             <div>
               {sponsors.performance.map((sponsor, idx) => (
-                <div key={idx} className="mb-12 last:mb-0 flex gap-20" >
-                  <img src={sponsor.image} alt={sponsor.name} className="w-1/3 mr-12 object-contain" />
+                <div key={idx} className="mb-12 last:mb-0 flex flex-col md:flex-row gap-8 md:gap-20 items-center" >
+                  <img src={sponsor.image} alt={sponsor.name} className="w-full md:w-1/3 md:mr-12 object-contain" />
                   <div className="text-left my-auto">
                     <h3 className="text-4xl md:text-5xl font-bold mb-3">{sponsor.name}</h3>
                     <p className="text-lg text-muted-foreground mb-6 italic">{sponsor.tagline}</p>
@@ -119,7 +119,7 @@ export function SponsorsPage() {
                 </div>
               ))}
             </div>
-            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -137,7 +137,7 @@ export function SponsorsPage() {
               Together, We Race Beyond Limits.
             </p>
             <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
-              style={{color: "#000"}}>
+              style={{ color: "#000" }}>
               Contact Partnership Team
             </button>
           </motion.div>
