@@ -58,7 +58,7 @@ export function GalleryPage() {
 
       {/* Filter Buttons */}
       <section className="bg-background py-8 px-4 border-b border-border sticky top-20 z-40 backdrop-blur-lg bg-background/80">
-        <div className="max-w-7xl mx-auto flex gap-4 justify-center flex-wrap">
+        <div className="max-w-7xl mx-auto flex gap-4 overflow-x-auto pb-2 md:pb-0 no-scrollbar justify-start md:justify-center">
           {[
             { label: "All", value: "all" },
             { label: "Events", value: "events" },
@@ -71,9 +71,9 @@ export function GalleryPage() {
               variant={filter === item.value ? "default" : "outline"}
               onClick={() => setFilter(item.value)}
               className={
-                filter === item.value
+                (filter === item.value
                   ? "bg-primary text-white"
-                  : "hover:bg-muted"
+                  : "hover:bg-muted") + " shrink-0"
               }
             >
               {item.label}
@@ -128,12 +128,12 @@ export function GalleryPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-6xl max-h-[90vh]"
+              className="relative w-full max-w-7xl max-h-[90vh] flex flex-col items-center justify-center p-4"
             >
               <img
                 src={filteredImages[selectedImage].image}
                 alt={filteredImages[selectedImage].title}
-                className="w-full h-full object-contain rounded-lg"
+                className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
               />
               <div className="text-center mt-4">
                 <h3 className="text-white text-2xl">

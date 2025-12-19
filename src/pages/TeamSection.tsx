@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 
 export function TeamPage() {
 
-    const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
+  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
-    const [showAlumni, setShowAlumni] = useState(false);
-      const drivers = getTeamMembersByCategory("drivers");
+  const [showAlumni, setShowAlumni] = useState(false);
+  const drivers = getTeamMembersByCategory("drivers");
   const leadership = getTeamMembersByCategory("leadership");
   const engineering = getTeamMembersByCategory("engineering");
 
-    const handleMemberClick = (memberId: string) => {
+  const handleMemberClick = (memberId: string) => {
     // Scroll to the top of the team section first, with offset to scroll up more
     const teamSection = document.getElementById("team");
     if (teamSection) {
@@ -29,8 +29,8 @@ export function TeamPage() {
     }, 300);
   };
 
-    return (
-      <div className="min-h-screen pt-20">
+  return (
+    <div className="min-h-screen pt-20">
       {/* Page Header */}
 
       <section
@@ -58,7 +58,7 @@ export function TeamPage() {
       </section>
 
       {/* Drivers Section */}
-      <section className="bg-background py-16 px-4">
+      <section className="bg-background py-8 md:py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl mb-12 uppercase tracking-tighter"
@@ -89,7 +89,7 @@ export function TeamPage() {
       </section>
 
       {/* Leadership Section */}
-      <section className="bg-card py-16 px-4 border-t border-border">
+      <section className="bg-card py-8 md:py-16 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl mb-12 uppercase tracking-tighter"
@@ -120,7 +120,7 @@ export function TeamPage() {
       </section>
 
       {/* Engineering Section */}
-      <section className="bg-background py-16 px-4 border-t border-border">
+      <section className="bg-background py-8 md:py-16 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl mb-12 uppercase tracking-tighter"
@@ -149,26 +149,26 @@ export function TeamPage() {
           </div>
         </div>
       </section>
-        <section className="bg-card py-16 px-4 border-t border-border">
+      <section className="bg-card py-8 md:py-16 px-4 border-t border-border">
         {/* Alumni Section */}
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl mb-6 uppercase tracking-tighter">Alumni</h2>
             <Link to="/alumni" className="text-sm text-primary underline mb-4 inline-block">
-              
-            <Button
-              variant="outline"
-              onClick={() => setShowAlumni(!showAlumni)}
-              className="bg-primary hover:bg-white cursor-pointer p-8 rounded-xl text-xl text-black hover:border-primary"
-            >
-              Visit Our Alumni Page
-            </Button>
+
+              <Button
+                variant="outline"
+                onClick={() => setShowAlumni(!showAlumni)}
+                className="bg-primary hover:bg-white cursor-pointer p-8 rounded-xl text-xl text-black hover:border-primary"
+              >
+                Visit Our Alumni Page
+              </Button>
             </Link>
             <br />
           </div>
 
         </div>
       </section>
-  </div>
-    );    
+    </div>
+  );
 }

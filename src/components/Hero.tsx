@@ -20,7 +20,7 @@ export function Hero({
   showScrollIndicator = true,
 }: HeroProps) {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative h-[100dvh] w-full overflow-hidden">
       {/* Background Image with Parallax Effect */}
       <motion.div
         className="absolute inset-0"
@@ -44,7 +44,7 @@ export function Hero({
           transition={{ duration: 0.8, delay: 0.3 }}
           className="max-w-6xl"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-6 text-white font-medium uppercase">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl tracking-tighter mb-6 text-white font-medium uppercase">
             {title}
           </h1>
           <p className="text-lg md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">

@@ -43,7 +43,7 @@ export function EventsPage() {
 
       {/* Filter Buttons */}
       <section className="bg-background py-8 px-4 border-b border-border sticky top-20 z-40 backdrop-blur-lg bg-background/80">
-        <div className="max-w-7xl mx-auto flex gap-4 justify-center">
+        <div className="max-w-7xl mx-auto flex gap-4 overflow-x-auto pb-2 md:pb-0 no-scrollbar justify-start md:justify-center">
           {[
             { label: "All Events", value: "all" },
             { label: "Upcoming", value: "upcoming" },
@@ -54,9 +54,9 @@ export function EventsPage() {
               variant={filter === item.value ? "default" : "outline"}
               onClick={() => setFilter(item.value as any)}
               className={
-                filter === item.value
+                (filter === item.value
                   ? "bg-primary"
-                  : "hover:bg-muted"
+                  : "hover:bg-muted") + " shrink-0"
               }
             >
               {item.label}

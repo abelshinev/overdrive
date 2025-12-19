@@ -16,6 +16,12 @@ root.render(
         {/* Layout wraps all pages that should include Navbar + Footer */}
         <Route element={<Layout />}>
           <Route path="/" element={<App />} />
+          <Route path="/rset" element={<App />} />
+          <Route path="/events" element={<App />} />
+          <Route path="/team" element={<App />} />
+          <Route path="/gallery" element={<App />} />
+          <Route path="/milestones" element={<App />} />
+          <Route path="/sponsors" element={<App />} />
           <Route path="/alumni" element={<AlumniPage />} />
           {/* other child routes */}
         </Route>

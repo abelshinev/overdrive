@@ -8,7 +8,7 @@ interface HomePageProps {
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
-  
+
 
   return (
     <div className="font border-4 ">
@@ -39,12 +39,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="text-primary text-sm uppercase tracking-wide mb-4">
                 Latest Update
               </div>
-              <h2 className="text-4xl md:text-5xl mb-6">
+              <h2 className="text-3xl md:text-5xl mb-6">
                 Launch of Overdrive Socials
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa
-                fugit possimus nesciunt suscipit non dicta ipsum ad repellat ut 
+                fugit possimus nesciunt suscipit non dicta ipsum ad repellat ut
                 eligendi sapiente, minus iusto temporibus asperiores a esse.
               </p>
               <a href="https://www.instagram.com/p/DNIUzhEzovL/">
@@ -55,7 +55,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   View Post on Instagram
                   <ArrowRight size={18} className="ml-2" />
                 </Button>
-               </a>
+              </a>
             </div>
             <motion.div
               className="relative  rounded-lg overflow-hidden"
@@ -63,7 +63,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               transition={{ duration: 0.3 }}
             >
               <img
-                src = "post.png"
+                src="post.png"
                 alt="Instagram Post"
                 className="w-full h-full object-cover"
               />
