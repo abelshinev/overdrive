@@ -1,0 +1,16 @@
+[
+  { "file": "wide1.png", "title": "Speed Line", "category": "car" },
+  { "file": "wide2.png", "title": "On Track", "category": "car" },
+  { "file": "wide3.png", "title": "Racing Line", "category": "car" },
+  { "file": "wide4.png", "title": "Pit Lane", "category": "behind-the-scenes" },
+  { "file": "wide5.png", "title": "Engine Detail", "category": "car" },
+  { "file": "wide6.png", "title": "Finish Line", "category": "events" },
+  { "file": "wide7.png", "title": "Night Drive", "category": "events" },
+  { "file": "carportrait.png", "title": "Car Portrait", "category": "car" },
+  { "file": "racersportrait.png", "title": "Racers Portrait", "category": "team" },
+  { "file": "stadiumportrait.png", "title": "Stadium View", "category": "events" },
+  { "file": "portrait1.png", "title": "Portrait 1", "category": "team" },
+  { "file": "portrait2.png", "title": "Portrait 2", "category": "team" },
+  { "file": "portrait3.png", "title": "Portrait 3", "category": "team" },
+  { "file": "portrait4.png", "title": "Portrait 4", "category": "team" }
+]

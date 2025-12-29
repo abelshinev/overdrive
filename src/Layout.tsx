@@ -73,7 +73,7 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
     </>
   );
 }
