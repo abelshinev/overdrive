@@ -1,6 +1,17 @@
 import { Instagram, Twitter, Youtube, Facebook, Linkedin } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+  onNavigate?: (target: string) => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
+  const handleClick = (e: React.MouseEvent, id: string) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(id);
+    }
+  };
+
   return (
     <footer className="bg-black border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -19,10 +30,9 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-medium uppercase tracking-wide mb-4 font-sans">Quick Links</h3>
             <ul className="space-y-2 text-md text-muted-foreground font-sans">
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Press</a></li>
-              <li><a href="mailto:overdriveracingrset@gmail.com" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><a href="#rset" onClick={(e) => handleClick(e, "rset")} className="hover:text-primary transition-colors">About Us</a></li>
+              <li><a href="#gallery" onClick={(e) => handleClick(e, "gallery")} className="hover:text-primary transition-colors">Press</a></li>
+              <li><a href="/contact" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -35,18 +45,6 @@ export function Footer() {
                 className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
               >
                 <Instagram size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-white hover:bg-primary transition-colors"
-              >
-                <Youtube size={18} />
               </a>
               <a
                 href="https://www.linkedin.com/company/sae-rset/" target="_blank"

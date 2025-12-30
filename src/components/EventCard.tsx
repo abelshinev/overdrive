@@ -12,6 +12,7 @@ interface EventCardProps {
   isPast?: boolean;
   result?: string;
   summary?: string;
+  hideButton?: boolean;
 }
 
 export function EventCard({
@@ -22,11 +23,12 @@ export function EventCard({
   isPast = false,
   result,
   summary,
+  hideButton,
 }: EventCardProps) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div
-      className="group relative overflow-hidden rounded-lg  bg-card border border-border"
+      className="group relative overflow-hidden rounded-lg bg-card border border-border h-full flex flex-col"
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
     >
@@ -40,7 +42,7 @@ export function EventCard({
           transition={{ duration: 0.5 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-        
+
         {isPast && result && (
           <Badge className="absolute top-4 right-4 bg-primary text-black">
             {result}
@@ -49,9 +51,9 @@ export function EventCard({
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex-1 flex flex-col">
         <h3 className="text-2xl font-medium mb-3">{title}</h3>
-        
+
         <div className="flex flex-col gap-2 mb-4 text-lg text-muted-foreground">
           <div className="flex items-center gap-2">
             <Calendar size={16} className="text-primary" />
@@ -75,16 +77,20 @@ export function EventCard({
           </motion.div>
         )}
 
-        <Button
-          variant="outline"
-          className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors"
-          onClick={() => {
-            // Toggle summary panel when button clicked
-            setOpen((v) => !v);
-          }}
-        >
-          {isPast ? (open ? "Close Results" : "View Results") : "Learn More"}
-        </Button>
+        <div className="mt-auto">
+          {!hideButton && (
+            <Button
+              variant="outline"
+              className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors"
+              onClick={() => {
+                // Toggle summary panel when button clicked
+                setOpen((v) => !v);
+              }}
+            >
+              {isPast ? (open ? "Close Results" : "View Results") : "Learn More"}
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Accent Line */}
