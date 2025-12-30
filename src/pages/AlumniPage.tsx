@@ -138,6 +138,12 @@ export function AlumniPage() {
               className="w-auto h-[500px] mt-10  rounded-lg shadow-lg mx-auto"
             />
             <h2 className="text-center text-4xl font-semibold mt-8">"Founding Fathers - Rogue Motorsport"</h2>
+            <img 
+              src="/alumni/group/group-photo2.png" 
+              alt="Team 2 Group Photo" 
+              className="w-auto h-[500px] mt-10  rounded-lg shadow-lg mx-auto"
+            />
+            <h2 className="text-center text-4xl font-semibold mt-8">Overdrive Racing</h2>
           </motion.div>
         </div>
       </section>
