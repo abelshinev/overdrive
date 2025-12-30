@@ -13,6 +13,7 @@ export default function Layout() {
   const routeMap: Record<string, string> = {
     home: "/",
     alumni: "/alumni",
+    contact: "/contact",
   };
 
   // Sync highlight with route path

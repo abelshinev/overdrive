@@ -14,11 +14,12 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
   const navItems = [
     { id: "home", label: "Home" },
     { id: "events", label: "Events" },
-    { id: "team", label: "Team" },
+    // { id: "team", label: "Team" },
     { id: "gallery", label: "Gallery" },
     { id: "milestones", label: "Milestones" },
     { id: "sponsors", label: "Sponsors" },
     { id: "alumni", label: "Alumni" }, // external route
+    { id: "contact", label: "Contact Us" },
   ];
 
   const handleClick = (id: string) => {
@@ -77,9 +78,8 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                   <button
                     key={item.id}
                     onClick={() => handleClick(item.id)}
-                    className={`group relative text-gray-300 hover:text-primary uppercase tracking-wider transition-colors ${
-                      active ? "text-white" : ""
-                    }`}
+                    className={`group relative text-gray-300 hover:text-primary uppercase tracking-wider transition-colors ${active ? "text-white" : ""
+                      }`}
                   >
                     {item.label}
                     <motion.span
@@ -110,11 +110,10 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
               <button
                 key={item.id}
                 onClick={() => handleClick(item.id)}
-                className={`block w-full text-left px-6 py-3 uppercase ${
-                  currentPage === item.id
-                    ? "text-white bg-white/10"
-                    : "text-gray-300 hover:text-white hover:bg-white/5"
-                }`}
+                className={`block w-full text-left px-6 py-3 uppercase ${currentPage === item.id
+                  ? "text-white bg-white/10"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
+                  }`}
               >
                 {item.label}
               </button>

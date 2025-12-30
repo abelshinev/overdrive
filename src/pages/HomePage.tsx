@@ -14,7 +14,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <div className="font border-4 ">
       <Hero
         image="herobg.jpg"
-        title="Presenting Our Team"
+        title="FROM THE HOUSE OF SAE"
         subtitle="Where precision engineering meets unrelenting speed"
         ctaText="Explore Our Journey"
         onCtaClick={() => {
@@ -40,19 +40,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 Latest Update
               </div>
               <h2 className="text-3xl md:text-5xl mb-6">
-                Launch of Overdrive Socials
+                From the workshop to an international track: Overdrive Racing
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa
-                fugit possimus nesciunt suscipit non dicta ipsum ad repellat ut
-                eligendi sapiente, minus iusto temporibus asperiores a esse.
+                Follow us on our journey to victory
               </p>
-              <a href="https://www.instagram.com/p/DNIUzhEzovL/">
+              <a href="https://www.instagram.com/racing.overdrive/" target="_blank" rel="noopener noreferrer">
                 <Button
-                  onClick={() => onNavigate("events")}
-                  className="bg-primary hover:bg-primary/90 "
+                  className="bg-primary hover:bg-primary/90 text-black"
                 >
-                  View Post on Instagram
+                  Visit our Instagram
                   <ArrowRight size={18} className="ml-2" />
                 </Button>
               </a>

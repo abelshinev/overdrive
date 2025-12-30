@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import App from "./App";
 import { AlumniPage } from "./pages/AlumniPage";
+import { ContactUsPage } from "./pages/ContactUsPage";
 import "./index.css";
 
 const container = document.getElementById("root")!;
@@ -23,6 +24,7 @@ root.render(
           <Route path="/milestones" element={<App />} />
           <Route path="/sponsors" element={<App />} />
           <Route path="/alumni" element={<AlumniPage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
           {/* other child routes */}
         </Route>
       </Routes>

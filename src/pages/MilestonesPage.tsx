@@ -42,7 +42,7 @@ export function MilestonesPage() {
           {/* Milestones */}
           <div className="space-y-0">
             {milestones.map((milestone, index) => (
-              <TimelineItem key={index} {...milestone} />
+              <TimelineItem key={index} {...milestone} isFirst={index === 0} />
             ))}
           </div>
         </div>

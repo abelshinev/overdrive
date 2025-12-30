@@ -23,13 +23,13 @@ export function SponsorsPage() {
   );
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Page Header */}
       <section
         className="relative h-96 flex items-center justify-center"
         style={{
           backgroundImage:
-            'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(10,10,10,0.9)), url("https://images.unsplash.com/photo-1757513915354-d596d3aaf2ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3RvcnNwb3J0JTIwdGVhbSUyMGdhcmFnZXxlbnwxfHx8fDE3NjAyNjY3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080")',
+            'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(10,10,10,0.9)), url("/sponsorship/sponserheader.jpeg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -136,10 +136,12 @@ export function SponsorsPage() {
             <p className="text-lg text-muted-foreground mb-8">
               Together, We Race Beyond Limits.
             </p>
-            <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
-              style={{ color: "#000" }}>
-              Contact Partnership Team
-            </button>
+            <a href="/contact">
+              <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
+                style={{ color: "#000" }}>
+                Contact Partnership Team
+              </button>
+            </a>
           </motion.div>
         </div>
       </section>
