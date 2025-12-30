@@ -1,4 +1,5 @@
 import { Instagram, Twitter, Youtube, Facebook, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface FooterProps {
   onNavigate?: (target: string) => void;
@@ -32,7 +33,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-2 text-md text-muted-foreground font-sans">
               <li><a href="#rset" onClick={(e) => handleClick(e, "rset")} className="hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#gallery" onClick={(e) => handleClick(e, "gallery")} className="hover:text-primary transition-colors">Press</a></li>
-              <li><a href="/contact" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
