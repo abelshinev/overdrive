@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { SponsorLogo } from "../components/SponsorLogo";
 import sponsors from "../lib/sponsors";
+import { Link } from "react-router-dom";
 
 export function SponsorsPage() {
 
@@ -136,12 +137,12 @@ export function SponsorsPage() {
             <p className="text-lg text-muted-foreground mb-8">
               Together, We Race Beyond Limits.
             </p>
-            <a href="/contact">
+            <Link to="/contact">
               <button className="bg-primary hover:bg-primary/90 !text-black text-lg font-medium px-8 py-4 rounded-lg transition-colors"
                 style={{ color: "#000" }}>
                 Contact Partnership Team
               </button>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>

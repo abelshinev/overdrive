@@ -23,7 +23,7 @@ export function TimelineItem({
 
   return (
     <motion.div
-      className={`flex items-start md:items-center gap-4 md:gap-8 mb-12 md:mb-16 ${
+      className={`flex items-start md:items-center gap-4 md:gap-8 mb-8 md:mb-16 ${
         // Mobile: always flex-row-reverse to put Node(Left) and Content(Right) (assuming DOM: Content, Node)
         // Wait, flex-row-reverse of [Content, Node] is [Node, Content]. Correct.
         "flex-row-reverse"
@@ -62,7 +62,7 @@ export function TimelineItem({
             <img
               src={image}
               alt={title}
-              className="mt-4 w-full h-48 object-cover rounded"
+              className="mt-4 w-full h-32 md:h-48 object-cover rounded"
             />
           )}
         </motion.div>
