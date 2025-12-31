@@ -1,8 +1,14 @@
 import { motion } from "motion/react";
 import { Phone, Mail, Instagram, Linkedin, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export function ContactUsPage() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             {/* Navbar placeholder or back button */}
