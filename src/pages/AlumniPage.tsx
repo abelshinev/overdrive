@@ -12,13 +12,13 @@ export function AlumniPage() {
 
 
   const allAlumni = getTeamMembersByCategory("alumni");
-  const faculty = allAlumni.filter(member => 
+  const faculty = allAlumni.filter(member =>
     member.id === "vineeth-krishna" || member.id === "john-paul" || member.id === "jerin-thankachan"
   );
-  const alumni = allAlumni.filter(member => 
+  const alumni = allAlumni.filter(member =>
     member.id !== "vineeth-krishna" && member.id !== "john-paul" && member.id !== "jerin-thankachan"
   );
-  
+
 
   const handleMemberClick = (memberId: string) => {
     // Open profile immediately; TeamMemberProfile handles scrolling to top
@@ -41,7 +41,7 @@ export function AlumniPage() {
         <div className="w-7xl mx-auto">
           <div className="text-center mb-12 pt-8">
             <h2 className="text-4xl mt-6 uppercase tracking-tighter font">Faculty Advisers</h2>
-            
+
           </div>
 
           {
@@ -120,28 +120,28 @@ export function AlumniPage() {
           >
 
             <div className="grid md:grid-cols-2 gap-8">
-              <img 
-                src="/alumni/group/group-photo-1.png" 
-                alt="Team Group Photo" 
-                className="w-full h-[400px] rounded-lg shadow-lg"
+              <img
+                src="/alumni/group/group-photo-1.png"
+                alt="Team Group Photo"
+                className="w-full h-auto md:h-[400px] object-cover rounded-lg shadow-lg"
               />
-              <img 
-                src="/alumni/group/group-photo-2.png" 
-                alt="Team Group Photo" 
-                className="w-full h-[400px] rounded-lg shadow-lg"
+              <img
+                src="/alumni/group/group-photo-2.png"
+                alt="Team Group Photo"
+                className="w-full h-auto md:h-[400px] object-cover rounded-lg shadow-lg"
               />
             </div>
-            
-            <img 
-              src="/alumni/group/group-photo.jpg" 
-              alt="Team Group Photo" 
-              className="w-auto h-[500px] mt-10  rounded-lg shadow-lg mx-auto"
+
+            <img
+              src="/alumni/group/group-photo.jpg"
+              alt="Team Group Photo"
+              className="w-full md:w-auto h-auto md:h-[500px] object-contain mt-10 rounded-lg shadow-lg mx-auto"
             />
             <h2 className="text-center text-4xl font-semibold mt-8">"Founding Fathers - Rogue Motorsport"</h2>
-            <img 
-              src="/alumni/group/group-photo2.png" 
-              alt="Team 2 Group Photo" 
-              className="w-auto h-[500px] mt-10  rounded-lg shadow-lg mx-auto"
+            <img
+              src="/alumni/group/group-photo2.png"
+              alt="Team 2 Group Photo"
+              className="w-full md:w-auto h-auto md:h-[500px] object-contain mt-10 rounded-lg shadow-lg mx-auto"
             />
             <h2 className="text-center text-4xl font-semibold mt-8">Overdrive Racing</h2>
           </motion.div>
