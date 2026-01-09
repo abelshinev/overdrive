@@ -14,7 +14,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <div className="font border-4 ">
       <Hero
         image="herobg.jpg"
-        title="FROM THE HOUSE OF SAE"
+        title="FROM THE HOUSE OF SAE RSET"
         subtitle="Where precision engineering meets unrelenting speed"
         ctaText="Explore Our Journey"
         onCtaClick={() => {
